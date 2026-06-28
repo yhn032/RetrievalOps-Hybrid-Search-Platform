@@ -25,7 +25,7 @@ expect_fail() {
 
 make_fixture() {
     name=$1
-    root="$TMP_ROOT/$name"
+    root="${2:-$TMP_ROOT/$name}"
     mkdir -p "$root/docs/standards/_baseline" "$root/docs/derived" \
         "$root/docs/deliverables" "$root/docs/research" \
         "$root/docs/intake" "$root/docs/origin" "$root/docs/internal" "$root/docs/inbox"
@@ -158,6 +158,19 @@ expect_fail "orphan document detected" bash "$LINK_CHECK" "$orphan"
 broken="$(make_fixture broken-link)"
 printf '[Broken](missing.md)\n' >> "$broken/docs/README.md"
 expect_fail "broken link detected" bash "$LINK_CHECK" "$broken"
+
+# 민감 경로(default-deny)의 미추적 원본 .md 는 링크 그래프 후보가 아니므로
+# 도달 불가로 잡히지 않아야 한다. orphan 테스트(deliverables)는 여전히 탐지된다.
+sensitive_md="$(make_fixture sensitive-md)"
+printf '# 원본\n전달받은 미추적 원본 자료.\n' > "$sensitive_md/docs/intake/ORIGINAL.md"
+expect_pass "untracked sensitive .md ignored by link check" bash "$LINK_CHECK" "$sensitive_md"
+
+# PROJECT_DIR 경로 자체에 민감 세그먼트(/docs/intake/ 등)가 포함돼도 관리 디렉터리의
+# 진짜 orphan을 놓치지 않아야 한다. 절대 경로가 아닌 저장소 상대 경로로 판정하는지 검증.
+poisoned="$(make_fixture poisoned "$TMP_ROOT/docs/intake/host/proj")"
+cp "$poisoned/docs/derived/analysis.md" "$poisoned/docs/derived/orphan.md"
+sed -i 's/document-id: derived-analysis/document-id: derived-orphan/' "$poisoned/docs/derived/orphan.md"
+expect_fail "orphan detected under sensitive-segment PROJECT_DIR" bash "$LINK_CHECK" "$poisoned"
 
 status_only="$(make_fixture status-only)"
 sed -i 's/status: template/status: drafted/' "$status_only/docs/standards/00-common.md"

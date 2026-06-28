@@ -1,6 +1,6 @@
 # Task: 프로젝트 폴더 관리 체계 이식
 
-## Status: in-progress
+## Status: complete
 
 ## Completion Criteria
 
@@ -10,8 +10,8 @@
 - [x] 표준 문서 메타데이터와 기준본 관리 절차가 정의되어 있다.
 - [x] 문서 배치, 출처, 연결성, 기준본 변경을 자동 검사한다.
 - [x] 원본 DOCX와 민감 자료가 Git에서 제외되어 있다.
-- [ ] 계획과 실제 구현 사이의 미해결 gap이 없다.
-- [ ] 전체 검증이 통과하고 변경 사항이 로컬에 커밋되어 있다.
+- [x] 계획과 실제 구현 사이의 미해결 gap이 없다.
+- [x] 전체 검증이 통과하고 변경 사항이 로컬에 커밋되어 있다.
 
 ## Context
 
@@ -21,7 +21,7 @@
 - **Scope**: 폴더 및 문서 관리 체계
 - **Out of scope**: Spring Boot, JDK, 빌드 도구, 애플리케이션 모듈 설계, 멀티 디자인 시스템
 - **Anchor**: [사용자 요구사항 원문](anchor.md)
-- **Resumed**: 2026-06-28, 후속 계획 기록 후 P4 재개
+- **Resumed**: 2026-06-28, 후속 계획 기록 후 P4 재개; Codex 토큰 소진 후 P5 재개·종료
 - **Follow-up**: [사이드 프로젝트 문서 이식 및 컨테이너 분리 WIP](../task-20260628-side-project-expansion/README.md)
 
 ## Done
@@ -43,12 +43,15 @@
 | P3.2 | P3 전체 검증 | 2026-06-28 | 126 PASS / 0 FAIL, 문서 32개 도달, simulated commit gate 통과 |
 | P4 | 공개 문서 재배치와 루트 정리 | 2026-06-28 | 원본 분석을 `docs/derived/`에 정착하고 루트 유지 기준 확정 |
 | P4.1 | P4 집중 검사 | 2026-06-28 | 원본 격리, 루트 정책, 관리 문서 15개, 링크 35개 확인 |
+| P5 | 계획–구현 gap 최종 점검 및 WIP 종료 | 2026-06-28 | 8개 완료 조건·G0~G4·anchor 검증, 전체 검증 통과 |
+| P5.1 | 종료 감사: 13-에이전트 워크플로 + evaluator 외부 교차검증 | 2026-06-28 | C1~C6·C8·anchor PASS; C7와 link-check 결함 적발 |
+| P5.2 | link-check 신뢰 경계 정합 및 앵커링 하드닝 | 2026-06-28 | 민감 원본 제외, 저장소 상대 경로 판정, 회귀 테스트 2개(15 PASS / 0 FAIL) |
 
 ## Remaining
 
 | # | Task | Blocked By | Priority | Notes |
 |---|---|---|---|---|
-| P5 | 계획–구현 gap 최종 점검 및 WIP 종료 | P4 | HIGH | 모든 완료 조건 검증 |
+| — | 없음 (모든 단계 완료) | — | — | 종료 커밋에서 WIP 디렉터리 삭제 |
 
 ## Dependencies
 
@@ -81,6 +84,7 @@ P0 → P1 → P2 → P3 → P4 → P5
 | G2 | 메타데이터와 기준본 절차 | 계획대로 구현 | 없음 | 14개 문서 스키마·상태·기준본 절차 검사 | closed |
 | G3 | 자동 gate | 계획대로 구현 | 없음 | 정적 검사·링크 그래프·fixture·commit gate 검사 | closed |
 | G4 | 문서 재배치와 루트 정리 | 계획대로 구현 | 없음 | 파생 분석 문서·source ID·루트 허용 목록 검사 | closed |
+| G5 | 링크 검사 범위가 거버넌스 신뢰 경계와 일치 | 초기 구현이 default-deny 민감 경로의 미추적 원본을 후보로 포함 | intake에 원본 `.md`가 들어오자 도달 불가로 오탐(P5 종료 감사에서 적발); 1차 수정의 미앵커 정규식은 일부 설치 경로에서 orphan을 놓치는 false negative | 후보 열거를 저장소 상대 경로로 판정해 민감 경로 최상위 README만 유지하고 미추적 원본 제외, 회귀 테스트 2개(미추적 민감 .md 무시 + 오염 경로 orphan 탐지) 추가 | closed |
 
 ## Files Modified
 
@@ -97,8 +101,8 @@ P0 → P1 → P2 → P3 → P4 → P5
 | `/workspaces` | `docs/standards/baseline-policy.md` | created |
 | `/workspaces` | `WORKFLOW.md`, `docs/standards/*.md` | metadata added |
 | `/workspaces` | `scripts/meta/workflow-gate.sh` | created |
-| `/workspaces` | `scripts/meta/docs-link-check.sh` | created |
-| `/workspaces` | `scripts/meta/workflow-gate-test.sh` | created |
+| `/workspaces` | `scripts/meta/docs-link-check.sh` | created; P5 신뢰 경계·앵커링 하드닝 |
+| `/workspaces` | `scripts/meta/workflow-gate-test.sh` | created; P5 회귀 테스트 2개 추가 |
 | `/workspaces` | `scripts/meta/completion-checker.sh` | modified |
 | `/workspaces` | `.claude/hooks/pre-commit-gate.sh` | modified |
 | `/workspaces` | `.codex/hooks/pre-commit-gate.sh` | modified |

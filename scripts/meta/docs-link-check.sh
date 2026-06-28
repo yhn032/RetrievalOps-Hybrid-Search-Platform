@@ -10,13 +10,26 @@ ROOT="$(realpath -m "$PROJECT_DIR/WORKFLOW.md")"
     exit 1
 }
 
+# docs/{intake,origin,internal,inbox} 는 default-deny 민감 경로다(.gitignore 및
+# workflow-gate.sh와 동일한 목록). 이 경로는 최상위 README.md 라우팅 문서만 추적하므로,
+# 미추적 원본(.docx, .md 등)은 공개 문서 링크 그래프의 후보가 아니다. 판정은 PROJECT_DIR
+# 접두를 제거한 저장소 상대 경로로 수행해, 설치 경로에 동일 이름의 세그먼트가 있어도
+# 관리 디렉터리 문서가 잘못 제외되지 않도록 한다.
 candidate_files() {
     for file in README.md PROJECT.md REFERENCE.md AGENTS.md CLAUDE.md; do
         [ -f "$PROJECT_DIR/$file" ] && printf '%s\n' "$PROJECT_DIR/$file"
     done
     for dir in app docs wip; do
         [ -d "$PROJECT_DIR/$dir" ] && find "$PROJECT_DIR/$dir" -type f -name '*.md' -print
-    done
+    done | awk -v root="$PROJECT_DIR/" '
+        {
+            rel = $0
+            if (substr(rel, 1, length(root)) == root) rel = substr(rel, length(root) + 1)
+            if (rel ~ /^docs\/(intake|origin|internal|inbox)\// &&
+                rel !~ /^docs\/(intake|origin|internal|inbox)\/README\.md$/) next
+            print
+        }
+    '
 }
 
 declare -A CANDIDATE=()
