@@ -56,3 +56,13 @@ sensitivity: public
 ## 현재 범위
 
 현재 작업은 폴더와 문서 관리 체계만 다룹니다. Spring Boot, JDK, 빌드 도구와 애플리케이션 모듈 구조는 후속 작업에서 결정합니다.
+
+## 자동 검사
+
+기존 completion checker가 다음 검사를 함께 실행합니다.
+
+- [workflow-gate.sh](scripts/meta/workflow-gate.sh): 문서 배치, 메타데이터, 상태, 출처, 민감 경로와 기준본 변경
+- [docs-link-check.sh](scripts/meta/docs-link-check.sh): 깨진 링크와 `WORKFLOW.md`에서 도달할 수 없는 문서
+- [workflow-gate-test.sh](scripts/meta/workflow-gate-test.sh): 정상 fixture와 의도적인 위반 fixture
+
+commit gate는 staged 변경을 매번 검사하며, 기준본 변경은 커밋 본문의 `Rebaseline:` 사유가 있어야 허용합니다.

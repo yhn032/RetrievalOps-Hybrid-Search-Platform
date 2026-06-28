@@ -51,6 +51,18 @@ if git -C "$PROJECT_DIR" diff --cached -U0 2>/dev/null | grep -qE "$SECRET_PATTE
   exit 2
 fi
 
+# Project workflow checks must inspect every staged commit, even when the
+# expensive completion-checker marker is still fresh.
+WORKTREE_ROOT=$(git -C "$PROJECT_DIR" rev-parse --show-toplevel 2>/dev/null || echo "$PROJECT_DIR")
+WORKFLOW_GATE="$WORKTREE_ROOT/scripts/meta/workflow-gate.sh"
+WORKFLOW_REBASELINE=0
+echo "$COMMAND" | grep -Fq 'Rebaseline:' && WORKFLOW_REBASELINE=1
+export WORKFLOW_REBASELINE
+if [ -f "$WORKFLOW_GATE" ] && ! bash "$WORKFLOW_GATE" "$WORKTREE_ROOT" >&2; then
+  echo "Workflow verification failed. Fix document policy violations before committing." >&2
+  exit 2
+fi
+
 # resolve branch name for per-worktree marker isolation
 BRANCH=$(git -C "$PROJECT_DIR" rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
 BRANCH_SAFE=$(echo "$BRANCH" | tr '/' '-')

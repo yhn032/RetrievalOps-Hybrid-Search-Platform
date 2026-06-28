@@ -177,6 +177,24 @@ bash scripts/sync-agents-mirror.sh --dry   # diff only
 and file modes, and **prunes** `.agents/` entries whose `.claude/` source was
 deleted, so the mirror tracks metadata and deletions, not just additions.
 
+## 프로젝트 문서 검사
+
+```bash
+bash scripts/meta/workflow-gate.sh
+bash scripts/meta/docs-link-check.sh
+bash scripts/meta/workflow-gate-test.sh
+```
+
+전체 검증은 위 검사를 기존 템플릿 검사와 함께 실행합니다.
+
+```bash
+CODEX_PROJECT_DIR=/workspaces AGENT_VENDOR=codex \
+  bash scripts/meta/completion-checker.sh
+```
+
+기준본을 변경하는 커밋은 한국어 제목을 사용하고 본문에
+`Rebaseline: <변경 사유>`를 포함해야 합니다.
+
 ### Codex sandbox bypass (DevContainer only)
 
 Codex CLI sandboxes commands with [bubblewrap](https://github.com/containers/bubblewrap), which requires unprivileged user namespaces. Docker kernel policy blocks namespace creation, so every shell call from the sandbox fails (`bwrap: No permissions to create a new namespace`).

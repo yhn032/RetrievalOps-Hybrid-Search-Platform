@@ -36,4 +36,4 @@ sensitivity: public
 - `template`, `drafted`, `excluded` 상태 문서를 기준본으로 만들지 않습니다.
 - `Rebaseline:` 사유가 없는 커밋에서 기준본을 변경하지 않습니다.
 
-자동 강제 검사는 Phase 3에서 기존 completion checker에 통합합니다.
+자동 강제 검사는 기존 completion checker와 commit gate에 통합되어 있습니다.

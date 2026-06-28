@@ -1,9 +1,9 @@
 #!/bin/bash
 # completion-checker.sh — Polyagent template pre-commit verification.
 #
-# Single-project template version. Delegates to verify-template.sh for
-# the heavy template integrity checks, then writes the per-branch marker
-# that pre-commit-gate.sh reads to allow git commit.
+# Single-project template version. Runs template integrity, project workflow,
+# document-link, and workflow regression checks, then writes the per-branch
+# marker that pre-commit-gate.sh reads to allow git commit.
 #
 # For the multi-project ROOT version (which iterates products/* and
 # performs cross-repo checks), see the consuming workspace's own
@@ -12,6 +12,9 @@ set -e
 
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-${CODEX_PROJECT_DIR:-$(cd "$(dirname "$0")/../.." && pwd)}}"
 VERIFY="$PROJECT_DIR/.devcontainer/verify-template.sh"
+WORKFLOW_GATE="$PROJECT_DIR/scripts/meta/workflow-gate.sh"
+DOCS_LINK_CHECK="$PROJECT_DIR/scripts/meta/docs-link-check.sh"
+WORKFLOW_GATE_TEST="$PROJECT_DIR/scripts/meta/workflow-gate-test.sh"
 
 if [ ! -x "$VERIFY" ] && [ ! -f "$VERIFY" ]; then
     echo "ERROR: $VERIFY not found." >&2
@@ -20,7 +23,10 @@ if [ ! -x "$VERIFY" ] && [ ! -f "$VERIFY" ]; then
 fi
 
 PROJECT_DIR="$PROJECT_DIR" bash "$VERIFY"
-RC=$?
+bash "$WORKFLOW_GATE" "$PROJECT_DIR"
+bash "$DOCS_LINK_CHECK" "$PROJECT_DIR"
+bash "$WORKFLOW_GATE_TEST" "$PROJECT_DIR"
+RC=0
 
 # Marker write follows the active vendor's pre-commit gate.
 if [ "$RC" -eq 0 ]; then

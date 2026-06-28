@@ -28,6 +28,17 @@ if git -C "$ACTUAL_ROOT" diff --cached -U0 2>/dev/null | grep -qE "$SECRET_PATTE
   echo "Inspect: git diff --cached" >&2
   exit 2
 fi
+
+# Project workflow checks must inspect every staged commit, even when the
+# expensive completion-checker marker is still fresh.
+WORKFLOW_GATE="$ACTUAL_ROOT/scripts/meta/workflow-gate.sh"
+WORKFLOW_REBASELINE=0
+echo "$COMMAND" | grep -Fq 'Rebaseline:' && WORKFLOW_REBASELINE=1
+export WORKFLOW_REBASELINE
+if [ -f "$WORKFLOW_GATE" ] && ! bash "$WORKFLOW_GATE" "$ACTUAL_ROOT" >&2; then
+  echo "Workflow verification failed. Fix document policy violations before committing." >&2
+  exit 2
+fi
 BRANCH=$(git -C "$ACTUAL_ROOT" rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
 BRANCH_SAFE=$(echo "$BRANCH" | tr '/' '-')
 STATE_DIR="$ACTUAL_ROOT/.codex/state"
