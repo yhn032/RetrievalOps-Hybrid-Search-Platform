@@ -4,6 +4,8 @@
 
 - [`MANIFEST.md`](MANIFEST.md): 단계별 적용 여부와 상태
 - [`_baseline/`](_baseline/README.md): 승인된 기준 문서
+- [`document-metadata.md`](document-metadata.md): 관리 대상 문서의 메타데이터 규격
+- [`baseline-policy.md`](baseline-policy.md): 승인 기준본 생성·변경 절차
 - `00`부터 `09`까지의 접두어: 생애주기 순서
 
 ## 단계별 표준

@@ -1,3 +1,14 @@
+---
+document-id: standard-06-testing
+role: standard
+stage: "06"
+status: template
+owner: yhn032
+updated: 2026-06-28
+source: internal
+sensitivity: public
+---
+
 # 06 테스트
 
 ## 목적

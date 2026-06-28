@@ -1,3 +1,14 @@
+---
+document-id: standard-05-coding
+role: standard
+stage: "05"
+status: template
+owner: yhn032
+updated: 2026-06-28
+source: internal
+sensitivity: public
+---
+
 # 05 코딩
 
 ## 목적

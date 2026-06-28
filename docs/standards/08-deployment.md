@@ -1,3 +1,14 @@
+---
+document-id: standard-08-deployment
+role: standard
+stage: "08"
+status: template
+owner: yhn032
+updated: 2026-06-28
+source: internal
+sensitivity: public
+---
+
 # 08 배포
 
 ## 목적

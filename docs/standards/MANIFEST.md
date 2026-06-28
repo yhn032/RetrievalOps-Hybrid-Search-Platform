@@ -1,3 +1,14 @@
+---
+document-id: lifecycle-manifest
+role: standard
+stage: "00"
+status: drafted
+owner: yhn032
+updated: 2026-06-28
+source: internal
+sensitivity: public
+---
+
 # 생애주기 상태
 
 ## 상태 정의
@@ -23,6 +34,14 @@
 | 07 보안 | [07-security.md](07-security.md) | 필수 | `template` | 보안 기준 수립 전 |
 | 08 배포 | [08-deployment.md](08-deployment.md) | 필수 | `template` | 배포 환경 결정 전 |
 | 09 운영 | [09-operations.md](09-operations.md) | 필수 | `template` | 운영 기준 수립 전 |
+
+## 관리 문서
+
+| 문서 | 상태 | 역할 |
+|---|---|---|
+| [WORKFLOW.md](../../WORKFLOW.md) | `drafted` | 최상위 라우터 |
+| [document-metadata.md](document-metadata.md) | `drafted` | 메타데이터 규격 |
+| [baseline-policy.md](baseline-policy.md) | `drafted` | 기준본 관리 절차 |
 
 ## 상태 변경 규칙
 

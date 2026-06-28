@@ -1,3 +1,14 @@
+---
+document-id: standard-01-intake
+role: standard
+stage: "01"
+status: drafted
+owner: yhn032
+updated: 2026-06-28
+source: internal
+sensitivity: public
+---
+
 # 01 수령
 
 ## 목적

@@ -1,3 +1,14 @@
+---
+document-id: standard-04-api
+role: standard
+stage: "04"
+status: template
+owner: yhn032
+updated: 2026-06-28
+source: internal
+sensitivity: public
+---
+
 # 04 API
 
 ## 목적

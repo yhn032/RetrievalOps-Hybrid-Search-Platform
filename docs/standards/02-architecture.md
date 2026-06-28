@@ -1,3 +1,14 @@
+---
+document-id: standard-02-architecture
+role: standard
+stage: "02"
+status: template
+owner: yhn032
+updated: 2026-06-28
+source: internal
+sensitivity: public
+---
+
 # 02 아키텍처
 
 ## 목적

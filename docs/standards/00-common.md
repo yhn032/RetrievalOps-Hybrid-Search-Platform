@@ -1,3 +1,14 @@
+---
+document-id: standard-00-common
+role: standard
+stage: "00"
+status: drafted
+owner: yhn032
+updated: 2026-06-28
+source: internal
+sensitivity: public
+---
+
 # 00 공통
 
 ## 목적

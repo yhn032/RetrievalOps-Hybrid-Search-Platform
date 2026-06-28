@@ -1,3 +1,14 @@
+---
+document-id: standard-09-operations
+role: standard
+stage: "09"
+status: template
+owner: yhn032
+updated: 2026-06-28
+source: internal
+sensitivity: public
+---
+
 # 09 운영
 
 ## 목적

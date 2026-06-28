@@ -1,3 +1,14 @@
+---
+document-id: standard-07-security
+role: standard
+stage: "07"
+status: template
+owner: yhn032
+updated: 2026-06-28
+source: internal
+sensitivity: public
+---
+
 # 07 보안
 
 ## 목적

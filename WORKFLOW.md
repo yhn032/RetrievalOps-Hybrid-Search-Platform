@@ -1,3 +1,14 @@
+---
+document-id: workflow-router
+role: standard
+stage: "00"
+status: drafted
+owner: yhn032
+updated: 2026-06-28
+source: internal
+sensitivity: public
+---
+
 # 프로젝트 워크플로우
 
 이 문서는 프로젝트 생애주기와 문서 위치를 안내하는 최상위 라우터입니다.
