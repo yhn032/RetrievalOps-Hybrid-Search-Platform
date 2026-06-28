@@ -1,17 +1,17 @@
 # Task: 사이드 프로젝트 문서 이식 및 컨테이너 분리
 
-## Status: in-progress
+## Status: in-progress — P0~P8 문서·스캐폴드 구축 완료, 페이즈별 gap 해소 대기
 
 ## Completion Criteria
 
-- [ ] 선행 폴더 관리 WIP가 종료되어 있다.
-- [ ] 사용자가 제공하는 Markdown 원본 2개가 `docs/intake/`에 격리되어 있다.
-- [ ] 원본을 복사하지 않고 요구사항·아키텍처·평가 계약으로 분리해 작성했다.
-- [ ] M0·M2·M4 평가 조건과 데이터셋, Recall@k, MRR, nDCG, p95, 반복 횟수가 문서화되어 있다.
-- [ ] 아키텍처와 모듈 경계, 저장소·캐시·메시지 큐·배포 선택이 ADR로 기록되어 있다.
-- [ ] 루트 `README.md`, `PROJECT.md`, `REFERENCE.md`가 실제 사이드 프로젝트에 맞게 재작성되어 있다.
-- [ ] 모든 추적 문서가 `WORKFLOW.md`에서 도달 가능하고 깨진 링크가 없다.
-- [ ] `app/` 하위 기능 폴더와 컨테이너 배포 단위가 일치한다.
+- [x] 선행 폴더 관리 WIP가 종료되어 있다.
+- [x] 사용자가 제공하는 Markdown 원본 2개가 `docs/intake/`에 격리되어 있다.
+- [x] 원본을 복사하지 않고 요구사항·아키텍처·평가 계약으로 분리해 작성했다.
+- [x] M0·M2·M4 평가 조건과 데이터셋, Recall@k, MRR, nDCG, p95, 반복 횟수가 문서화되어 있다.
+- [x] 아키텍처와 모듈 경계, 저장소·캐시·메시지 큐·배포 선택이 ADR로 기록되어 있다.
+- [x] 루트 `README.md`, `PROJECT.md`, `REFERENCE.md`가 실제 사이드 프로젝트에 맞게 재작성되어 있다.
+- [x] 모든 추적 문서가 `WORKFLOW.md`에서 도달 가능하고 깨진 링크가 없다.
+- [ ] `app/` 하위 기능 폴더와 컨테이너 배포 단위가 일치한다. (모델 실행 단위 미분리 — gap)
 - [ ] 코드 수정 단위는 VS Code 연결과 로컬 디버깅이 가능하며 배포 이미지와 개발 컨테이너가 분리되어 있다.
 - [ ] 모든 서비스가 개별 컨테이너로 실행되고 `dev`·`stg`·`prod` 설정이 분리되어 있다.
 - [ ] 모든 컨테이너가 non-root, host UID/GID, 공통 timezone과 UTF-8 규칙을 준수한다.
@@ -83,12 +83,13 @@ app/
 | P5 | 기능별 컨테이너 배포 단위 확정 | 2026-06-28 | app/ 6개 단위(코드 3·인프라 3) README로 확정 |
 | P6 | dev·stg·prod Docker·환경변수 구성 | 2026-06-28 | 36파일(Dockerfile 18·.env.example 18), 비밀 placeholder·.env 미추적 |
 | P7 | VS Code 디버깅·배포 분리·runtime 규칙 | 2026-06-28 | 코드 단위 3종 devcontainer, 런타임/배포 문서, 규칙 검사 18 PASS |
+| P8 | 링크·검증·계획 gap 최종 점검 | 2026-06-28 | 검증 green(126·gate·link·runtime), 적대적 감사로 미기록 gap 5건 적발·기록 |
 
 ## Remaining
 
 | # | Task | Blocked By | Priority | Notes |
 |---|---|---|---|---|
-| P8 | 링크·검증·계획 gap 최종 점검 | P4, P7 | HIGH | WIP 종료 조건 확인 |
+| GR | 페이즈별·P8 발견 gap 해소 | P8 | — | 추후 진행(사용자 지시). 해소 완료 시 완료 조건 충족·WIP 종료 |
 
 ## Dependencies
 
@@ -135,6 +136,20 @@ B0 + B1 → P0 → P1 ─┬→ P2 ─┐
 | P5 | 기능별 컨테이너 배포 단위 확정 | app/ 6개 단위 디렉터리+README 생성, 책임·기술·성격 명시 | 실제 Dockerfile·환경변수·실행 미생성(P6~P7로 분리) | open |
 | P6 | dev·stg·prod Docker·환경변수 | 36파일 생성, non-root·TZ·UTF-8·HOST_UID/GID 규약 적용 | 앱 코드가 M1 이후라 코드 유닛 빌드/COPY/CMD가 TODO(M1) 자리표시자, infra config 파일도 미생성, 런타임 규칙을 P7 대신 P6 Dockerfile에 선반영 | open |
 | P7 | VS Code 디버깅·배포 분리·runtime 규칙 | devcontainer 3종·배포 분리 문서·runtime-rules-check.sh(18 PASS) | 검사 스크립트가 자동 게이트에 미연동, devcontainer/dev 이미지 실제 빌드·기동 미검증(앱 코드 M1 이후), HOST_UID/GID 1000 고정 | open |
+| P8 | 링크·검증·gap 최종 점검 | 검증 green·하드에러 0, 5-lens 적대적 감사 + evaluator 외부 교차검증 | 미기록 gap 5건 적발(아래 'P8 점검 발견 gap') | open |
+
+### P8 점검에서 발견한 미기록 gap (추후 해소)
+
+P8 최종 감사(5-lens + evaluator)가 적발한, 기존 페이즈 기록에 빠져 있던 gap이다.
+하드 에러는 아니며(검증 green) 사용자 지시에 따라 기록만 한다.
+
+| # | gap | 심각도 | 관련 |
+|---|---|---|---|
+| G-P8-1 | 모델 실행 별도 컨테이너 부재 — anchor와 WIP 계획은 "모델도 별도 컨테이너 기동"을 요구하나 임베딩·Reranker가 retrieval-service에 in-process로 접힘. ADR·gap 기록 없음 | 높음 | P3·P5 |
+| G-P8-2 | host UID/GID 정합이 "모든 컨테이너"에서 코드 단위로 축소(인프라 3종 미적용). runtime 문서엔 설계로 기술되나 anchor 문구 이탈은 미기록 | 중간 | P6·P7 |
+| G-P8-3 | metadata-store(MariaDB) 3개 Dockerfile에 명시 USER 없음(entrypoint가 root로 시작 후 mysql로 drop). runtime-rules-check가 인프라 USER를 미검사하는 사각 포함 | 중간 | P6·P7 |
+| G-P8-4 | intake 문장 일부 근접 인용(평가계약 측정조건 bullet, 모듈 책임 셀, 파이프라인 문자열) — 단어 단위 추출이나 "복사 금지" 관점에서 미기록 | 낮음 | P2·P3 |
+| G-P8-5 | REFERENCE.md 푸터 "Last updated: 2026-06-25"가 2026-06-28 재작성과 불일치(표기 오류) | 낮음 | P4 |
 
 ## Files Modified
 
