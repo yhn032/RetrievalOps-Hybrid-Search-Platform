@@ -74,3 +74,15 @@ Thumbs.db
 # would overwrite any consumer repo that registers a Runner + schedule. Kept
 # locally for manual mirror wiring; never tracked/pushed. See PROJECT.md.
 /.gitlab-ci.yml
+
+# -----------------------------------------------------------------------------
+# 프로젝트 문서 원본 및 민감 자료 — README만 추적
+# -----------------------------------------------------------------------------
+/docs/intake/**
+!/docs/intake/README.md
+/docs/origin/**
+!/docs/origin/README.md
+/docs/internal/**
+!/docs/internal/README.md
+/docs/inbox/**
+!/docs/inbox/README.md
