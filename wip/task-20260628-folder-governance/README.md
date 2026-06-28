@@ -21,6 +21,8 @@
 - **Scope**: 폴더 및 문서 관리 체계
 - **Out of scope**: Spring Boot, JDK, 빌드 도구, 애플리케이션 모듈 설계, 멀티 디자인 시스템
 - **Anchor**: [사용자 요구사항 원문](anchor.md)
+- **Paused**: 2026-06-28, 후속 계획 기록을 위해 사용자 요청으로 일시 중지
+- **Follow-up**: [사이드 프로젝트 문서 이식 및 컨테이너 분리 WIP](../task-20260628-side-project-expansion/README.md)
 
 ## Done
 
