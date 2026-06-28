@@ -82,12 +82,12 @@ app/
 | P4 | 루트 프로젝트 문서 재작성 | 2026-06-28 | README·PROJECT 전면 재작성, REFERENCE 재구성+app 절, 검증 126 PASS |
 | P5 | 기능별 컨테이너 배포 단위 확정 | 2026-06-28 | app/ 6개 단위(코드 3·인프라 3) README로 확정 |
 | P6 | dev·stg·prod Docker·환경변수 구성 | 2026-06-28 | 36파일(Dockerfile 18·.env.example 18), 비밀 placeholder·.env 미추적 |
+| P7 | VS Code 디버깅·배포 분리·runtime 규칙 | 2026-06-28 | 코드 단위 3종 devcontainer, 런타임/배포 문서, 규칙 검사 18 PASS |
 
 ## Remaining
 
 | # | Task | Blocked By | Priority | Notes |
 |---|---|---|---|---|
-| P7 | VS Code 디버깅·배포 분리와 runtime 규칙 적용 | P6 | HIGH | non-root·UID/GID·timezone·UTF-8 |
 | P8 | 링크·검증·계획 gap 최종 점검 | P4, P7 | HIGH | WIP 종료 조건 확인 |
 
 ## Dependencies
@@ -134,6 +134,7 @@ B0 + B1 → P0 → P1 ─┬→ P2 ─┐
 | P4 | 루트 README·PROJECT·REFERENCE 재작성 | README·PROJECT 전면 재작성, REFERENCE는 운영 명령 보존 위해 재구성+app 절 | REFERENCE에 폴리에이전트 인프라 설명 잔존, CLAUDE/AGENTS는 템플릿 거버넌스 서술 유지(저장소 이중 정체성) | open |
 | P5 | 기능별 컨테이너 배포 단위 확정 | app/ 6개 단위 디렉터리+README 생성, 책임·기술·성격 명시 | 실제 Dockerfile·환경변수·실행 미생성(P6~P7로 분리) | open |
 | P6 | dev·stg·prod Docker·환경변수 | 36파일 생성, non-root·TZ·UTF-8·HOST_UID/GID 규약 적용 | 앱 코드가 M1 이후라 코드 유닛 빌드/COPY/CMD가 TODO(M1) 자리표시자, infra config 파일도 미생성, 런타임 규칙을 P7 대신 P6 Dockerfile에 선반영 | open |
+| P7 | VS Code 디버깅·배포 분리·runtime 규칙 | devcontainer 3종·배포 분리 문서·runtime-rules-check.sh(18 PASS) | 검사 스크립트가 자동 게이트에 미연동, devcontainer/dev 이미지 실제 빌드·기동 미검증(앱 코드 M1 이후), HOST_UID/GID 1000 고정 | open |
 
 ## Files Modified
 
@@ -151,6 +152,9 @@ B0 + B1 → P0 → P1 ─┬→ P2 ─┐
 | `/workspaces` | `REFERENCE.md` | reframed+app 절 (P4) |
 | `/workspaces` | `app/README.md` 및 `app/<unit>/README.md` 6종 | created (P5) |
 | `/workspaces` | `app/<unit>/{dev,stg,prod}/Dockerfile`·`.env.example` 36종 | created (P6) |
+| `/workspaces` | `app/<code-unit>/.devcontainer/devcontainer.json` 3종 | created (P7) |
+| `/workspaces` | `docs/deliverables/runtime-and-deployment.md` | created (P7) |
+| `/workspaces` | `scripts/meta/runtime-rules-check.sh` | created (P7) |
 
 ## Unpushed Commits
 

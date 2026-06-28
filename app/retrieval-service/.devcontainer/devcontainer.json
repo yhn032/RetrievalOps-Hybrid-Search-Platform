@@ -1,0 +1,16 @@
+{
+  "name": "retrieval-service (dev)",
+  "build": {
+    "dockerfile": "../dev/Dockerfile",
+    "args": { "HOST_UID": "1000", "HOST_GID": "1000" }
+  },
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "remoteUser": "app",
+  "forwardPorts": [8000],
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python"]
+    }
+  }
+}

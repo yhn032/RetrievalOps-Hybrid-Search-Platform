@@ -6,3 +6,4 @@
 
 - [평가 계약 (M0·M2·M4)](evaluation-contract.md)
 - [아키텍처 결정 기록 (ADR)](adr/README.md)
+- [런타임 규칙과 배포 분리](runtime-and-deployment.md)
