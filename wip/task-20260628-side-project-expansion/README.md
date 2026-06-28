@@ -1,6 +1,6 @@
 # Task: 사이드 프로젝트 문서 이식 및 컨테이너 분리
 
-## Status: blocked
+## Status: in-progress
 
 ## Completion Criteria
 
@@ -23,11 +23,11 @@
 - **Queued**: 2026-06-28
 - **Estimated scope**: XL
 - **Affected repos**: `/workspaces`
-- **Start condition**: 선행 WIP 종료 및 Markdown 원본 2개 업로드
-- **Blocked by**: `../task-20260628-folder-governance`, 사용자 입력 파일 2개
+- **Start condition**: 선행 WIP 종료 및 Markdown 원본 2개 업로드 (충족)
+- **Started**: 2026-06-28 (선행 폴더 관리 WIP 종료, 원본 2개 업로드로 차단 해제)
 - **Anchor**: [사용자 요구사항 원문](anchor.md)
 - **Scope**: 문서 이식, 프로젝트 문서 재작성, 기능별 컨테이너 분리
-- **Out of scope until unblocked**: 실제 문서 추출, 기술 버전 선정, 컨테이너 생성·기동
+- **이제 범위 내**: 문서 추출, 기술 버전 선정(ADR), 컨테이너 구성·기동
 
 ## Source Handling
 
@@ -73,14 +73,14 @@ app/
 | # | Task | Date | Notes |
 |---|---|---|---|
 | Q0 | 후속 계획 WIP 등록 | 2026-06-28 | 선행 WIP 종료 전에는 구현하지 않음 |
+| B0 | 선행 폴더 관리 WIP 종료 | 2026-06-28 | P5 종료 감사 후 디렉터리 삭제 |
+| B1 | Markdown 원본 2개 업로드 | 2026-06-28 | charter·resume-evidence를 intake에 격리 |
+| P0 | 원본 격리·분석 및 문서 배치표 확정 | 2026-06-28 | source ID 부여, 저장소 성격 확정, 복사 금지 |
 
 ## Remaining
 
 | # | Task | Blocked By | Priority | Notes |
 |---|---|---|---|---|
-| B0 | 선행 폴더 관리 WIP 종료 | 사용자 재개 | HIGH | 현재 P4·P5 잔여 |
-| B1 | Markdown 원본 2개 업로드 | 사용자 입력 | HIGH | 파일명과 source ID는 수령 시 기록 |
-| P0 | 원본 격리·분석 및 문서 배치표 확정 | B0, B1 | HIGH | 복사 금지, 역할별 분해 |
 | P1 | 요구사항과 파생 분석 문서 작성 | P0 | HIGH | 현재 메타데이터·출처 규칙 적용 |
 | P2 | M0·M2·M4 평가 계약 작성 | P1 | HIGH | 평가 데이터와 측정 조건 포함 |
 | P3 | 아키텍처 및 모듈 경계 ADR 작성 | P1 | HIGH | 선택 근거와 대안 기록 |
@@ -102,6 +102,7 @@ B0 + B1 → P0 → P1 ─┬→ P2 ─┐
 
 | Date | Decision | Rationale | Alternatives Considered |
 |---|---|---|---|
+| 2026-06-28 | 이 워크스페이스를 분리된 사이드 프로젝트 본체로 확정 | 차터의 "별도 저장소"는 이력서 프로젝트에서 사이드 프로젝트를 분리한다는 뜻이며 이 저장소가 그 분리본 | 별도 저장소 신규 생성 |
 | 2026-06-28 | 현재 WIP 종료 후 이 WIP를 시작 | 폴더 규칙이 확정돼야 후속 문서 위치가 안정됨 | 두 WIP 병행 |
 | 2026-06-28 | 업로드 원본은 `intake/`에서 미추적 | 사용자 제공 원본은 default-deny 원칙 적용 | 원본 Markdown 직접 커밋 |
 | 2026-06-28 | 평가 계약과 ADR은 `deliverables/`에 배치 | 현재 역할 기반 폴더 체계를 유지 | 사용자 예시 경로를 그대로 생성 |
@@ -114,13 +115,19 @@ B0 + B1 → P0 → P1 ─┬→ P2 ─┐
 
 | ID | Planned | Actual | Gap | Resolution | Status |
 |---|---|---|---|---|---|
-| N0 | 선행 WIP 종료 후 시작 | 선행 WIP P4·P5 잔여 | 시작 조건 미충족 | 선행 WIP 완료 | blocked |
-| N1 | 원본 Markdown 2개 분석 | 파일 미업로드 | 입력 없음 | 사용자 업로드 | blocked |
+| N0 | 선행 WIP 종료 후 시작 | 선행 WIP 종료됨 | 없음 | 차단 해제 | closed |
+| N1 | 원본 Markdown 2개 분석 | 2개 업로드·격리, source ID 부여 | 없음 | P0에서 분석 | closed |
 | N2 | 평가 계약과 ADR | 미구현 | 산출물 없음 | P2·P3 | open |
 | N3 | 프로젝트 맞춤 루트 문서 | 현재 거버넌스 템플릿 내용 | 프로젝트 내용 미반영 | P4 | open |
 | N4 | 기능별 배포 단위 | `app/README.md`만 존재 | 기능 경계 미확정 | P5 | open |
 | N5 | 환경별 컨테이너 구성 | 미구현 | dev·stg·prod 없음 | P6 | open |
 | N6 | 디버깅·배포·권한 규칙 | 미구현 | 실행 검증 없음 | P7 | open |
+
+### 페이즈별 구현 gap (기록만, P8 이후 일괄 해소)
+
+| 페이즈 | 계획 | 실제 구현 | gap | 상태 |
+|---|---|---|---|---|
+| P0 | 원본 격리·분석, 문서 배치표 확정 | derived 분석 문서에 배치표 통합, 저장소 성격 확정 절 추가 | 배치표를 독립 산출물로 분리하지 않음 | open |
 
 ## Files Modified
 
@@ -128,6 +135,7 @@ B0 + B1 → P0 → P1 ─┬→ P2 ─┐
 |---|---|---|
 | `/workspaces` | `wip/task-20260628-side-project-expansion/README.md` | created |
 | `/workspaces` | `wip/task-20260628-side-project-expansion/anchor.md` | created |
+| `/workspaces` | `docs/derived/side-project-source-analysis.md` | created (P0) |
 
 ## Unpushed Commits
 

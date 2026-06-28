@@ -7,3 +7,4 @@
 ## 문서 목록
 
 - [폴더 관리 체계 분석](folder-governance-analysis.md)
+- [사이드 프로젝트 원본 분석과 문서 배치표](side-project-source-analysis.md)
