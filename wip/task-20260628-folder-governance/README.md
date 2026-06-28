@@ -5,8 +5,8 @@
 ## Completion Criteria
 
 - [x] 역할별 문서 폴더와 Git 추적 경계가 적용되어 있다.
-- [ ] `WORKFLOW.md`에서 모든 추적 문서에 도달할 수 있다.
-- [ ] `MANIFEST.md`에서 생애주기 단계와 상태를 확인할 수 있다.
+- [x] `WORKFLOW.md`에서 모든 추적 문서에 도달할 수 있다.
+- [x] `MANIFEST.md`에서 생애주기 단계와 상태를 확인할 수 있다.
 - [ ] 표준 문서 메타데이터와 기준본 관리 절차가 정의되어 있다.
 - [ ] 문서 배치, 출처, 연결성, 기준본 변경을 자동 검사한다.
 - [x] 원본 DOCX와 민감 자료가 Git에서 제외되어 있다.
@@ -20,6 +20,7 @@
 - **Affected repos**: `/workspaces`
 - **Scope**: 폴더 및 문서 관리 체계
 - **Out of scope**: Spring Boot, JDK, 빌드 도구, 애플리케이션 모듈 설계, 멀티 디자인 시스템
+- **Anchor**: [사용자 요구사항 원문](anchor.md)
 
 ## Done
 
@@ -31,12 +32,12 @@
 | P0.1 | Git 추적 경계 적용 | 2026-06-28 | 원본·내부·미분류 자료는 README만 추적 |
 | P0.2 | 원본 DOCX 격리 | 2026-06-28 | `docs/intake/`로 이동하고 ignore 확인 |
 | P0.3 | Phase 0 검증 | 2026-06-28 | 집중 검사 통과, 전체 검사 126 PASS / 0 FAIL |
+| P1 | 생애주기 라우터와 상태 구조 구성 | 2026-06-28 | `WORKFLOW.md`, `MANIFEST.md`, `00`~`09` 표준 추가 |
 
 ## Remaining
 
 | # | Task | Blocked By | Priority | Notes |
 |---|---|---|---|---|
-| P1 | `WORKFLOW.md`, `MANIFEST.md`, 단계별 표준 구성 | P0 | HIGH | 생애주기와 상태 정의 |
 | P2 | 메타데이터와 기준본 변경 절차 정의 | P1 | HIGH | 출처와 배제 사유 포함 |
 | P3 | 문서 gate 및 연결성 검사 구현 | P2 | HIGH | 기존 completion checker에 통합 |
 | P4 | 공개 문서 재배치와 루트 정리 | P3 | MEDIUM | 기존 거버넌스 문서는 루트 유지 |
@@ -57,13 +58,14 @@ P0 → P1 → P2 → P3 → P4 → P5
 | 2026-06-28 | `inbox/`도 기본 미추적으로 운영 | 분류 전 자료의 민감도를 알 수 없음 | 원안대로 추적 |
 | 2026-06-28 | 원본 DOCX는 `intake/`에서 미추적 | 전달받은 원본을 default-deny로 보호 | 원본을 공개 저장소에 커밋 |
 | 2026-06-28 | `refs/`를 만들지 않음 | `origin/`과 `derived/`에 역할이 중복됨 | 원안의 `refs/` 유지 |
+| 2026-06-28 | UI 단계는 조건부 `template`로 유지 | 화면 필요 여부가 결정되지 않았으므로 임의 배제하지 않음 | 즉시 `excluded` 처리 |
 
 ## Plan–Implementation Gap
 
 | ID | Planned | Actual | Gap | Resolution | Status |
 |---|---|---|---|---|---|
 | G0 | 역할별 기본 폴더와 추적 경계 | 계획대로 구현 | 없음 | ignore 및 경로 검사 완료 | closed |
-| G1 | 생애주기 라우터와 상태 관리 | 미구현 | `WORKFLOW.md`, `MANIFEST.md` 없음 | Phase 1 | open |
+| G1 | 생애주기 라우터와 상태 관리 | 계획대로 구현 | 없음 | 라우터·상태표·단계 문서 검사 | closed |
 | G2 | 메타데이터와 기준본 절차 | 미구현 | 규칙 문서 없음 | Phase 2 | open |
 | G3 | 자동 gate | 미구현 | 기존 템플릿 검사만 존재 | Phase 3 | open |
 | G4 | 문서 재배치와 루트 정리 | 원본 DOCX 이동 완료 | 공개 문서 재배치 미완료 | Phase 4 | partial |
@@ -76,6 +78,9 @@ P0 → P1 → P2 → P3 → P4 → P5
 | `/workspaces` | `app/README.md` | created |
 | `/workspaces` | `docs/**/README.md` | created |
 | `/workspaces` | `docs/intake/*.docx` | moved, local-only |
+| `/workspaces` | `WORKFLOW.md` | created |
+| `/workspaces` | `docs/standards/MANIFEST.md` | created |
+| `/workspaces` | `docs/standards/00-*.md`~`09-*.md` | created |
 | `/workspaces` | `wip/task-20260628-folder-governance/README.md` | created |
 | `/workspaces` | `wip/task-20260628-folder-governance/anchor.md` | created |
 
@@ -83,4 +88,4 @@ P0 → P1 → P2 → P3 → P4 → P5
 
 | Repo | Branch | Commit | Description |
 |---|---|---|---|
-| `/workspaces` | `main` | — | Phase 0 작업 중 |
+| — | — | — | 없음 |
