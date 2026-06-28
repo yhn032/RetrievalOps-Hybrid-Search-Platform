@@ -79,12 +79,12 @@ app/
 | P1 | 요구사항과 파생 분석 문서 작성 | 2026-06-28 | FR 8개·NFR 9개, 기술 선택은 ADR로 위임 |
 | P2 | M0·M2·M4 평가 계약 작성 | 2026-06-28 | 데이터셋·Recall@k·MRR·nDCG·p95·반복 횟수·측정 조건, 완성도 검토 통과 |
 | P3 | 아키텍처 및 모듈 경계 ADR 작성 | 2026-06-28 | ADR 6종, 적대적 검토 후 원본 정합성 2건 보정 |
+| P4 | 루트 프로젝트 문서 재작성 | 2026-06-28 | README·PROJECT 전면 재작성, REFERENCE 재구성+app 절, 검증 126 PASS |
 
 ## Remaining
 
 | # | Task | Blocked By | Priority | Notes |
 |---|---|---|---|---|
-| P4 | 루트 프로젝트 문서 재작성 | P2, P3 | HIGH | README·PROJECT·REFERENCE |
 | P5 | 기능별 컨테이너 배포 단위 확정 | P3 | HIGH | 정확한 app 하위 폴더 결정 |
 | P6 | dev·stg·prod Docker·환경변수 구성 | P5 | HIGH | 비밀정보는 추적하지 않음 |
 | P7 | VS Code 디버깅·배포 분리와 runtime 규칙 적용 | P6 | HIGH | non-root·UID/GID·timezone·UTF-8 |
@@ -131,6 +131,7 @@ B0 + B1 → P0 → P1 ─┬→ P2 ─┐
 | P1 | 요구사항·파생 분석 문서 작성 | FR·NFR 표 작성, 정량 목표값은 평가계약으로 위임 | 요구사항에 목표 수치(목표 Recall@k·p95 임계) 미포함 | open |
 | P2 | M0·M2·M4 평가 계약 작성 | 필수 지표·측정 조건 전부 포함, 완성도 검토 통과 | 데이터셋 최종 선정·목표 수치·질의셋 열거를 M0 실행·ADR로 위임 | open |
 | P3 | 아키텍처·모듈·기술 ADR 6종 | ADR 6종 작성·적대적 검토, 원본 정합성 오류 2건 보정 | MQ·색인 워커 언어 결정 잠정(포트폴리오 강조점 따라 재검토), Java 비동기 시연 미반영, 데이터셋 선정 ADR은 M0 실행 시로 위임, MariaDB 실무 근거 미확정 | open |
+| P4 | 루트 README·PROJECT·REFERENCE 재작성 | README·PROJECT 전면 재작성, REFERENCE는 운영 명령 보존 위해 재구성+app 절 | REFERENCE에 폴리에이전트 인프라 설명 잔존, CLAUDE/AGENTS는 템플릿 거버넌스 서술 유지(저장소 이중 정체성) | open |
 
 ## Files Modified
 
@@ -143,6 +144,9 @@ B0 + B1 → P0 → P1 ─┬→ P2 ─┐
 | `/workspaces` | `docs/deliverables/evaluation-contract.md` | created (P2) |
 | `/workspaces` | `docs/deliverables/README.md` | modified (P2·P3 링크) |
 | `/workspaces` | `docs/deliverables/adr/` | created (P3, ADR 6종+인덱스) |
+| `/workspaces` | `README.md` | rewritten (P4) |
+| `/workspaces` | `PROJECT.md` | rewritten (P4) |
+| `/workspaces` | `REFERENCE.md` | reframed+app 절 (P4) |
 
 ## Unpushed Commits
 

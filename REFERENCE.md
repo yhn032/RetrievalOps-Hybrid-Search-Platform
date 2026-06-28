@@ -1,7 +1,26 @@
-# REFERENCE.md — Commands & Procedures
+# REFERENCE.md — 실행 명령과 운영 절차
 
-> Actionable commands, configuration, and troubleshooting.
-> For domain context, see [PROJECT.md](PROJECT.md).
+> RAG Retrieval Platform의 실행·검증·운영 명령. 도메인은 [PROJECT.md](PROJECT.md),
+> 문서 라우터는 [WORKFLOW.md](WORKFLOW.md)를 참조한다.
+>
+> 아래 명령은 이 프로젝트를 개발하는 폴리에이전트 DevContainer 환경 기준이다.
+
+## 애플리케이션 구조 및 실행
+
+기능별 컨테이너 배포 단위는 `app/<deployment-unit>/`에 둔다
+([ADR-0001](docs/deliverables/adr/0001-architecture-and-module-boundary.md)).
+
+| 배포 단위 | 기술 | 성격 |
+|---|---|---|
+| `app/api-service` | Spring Boot | 코드 수정 단위(VS Code 디버깅) |
+| `app/retrieval-service` | FastAPI | 코드 수정 단위 |
+| `app/index-worker` | Python | 코드 수정 단위 |
+| `app/search-store` | OpenSearch | 인프라 컨테이너 |
+| `app/metadata-store` | MariaDB | 인프라 컨테이너 |
+| `app/cache` | Redis | 인프라 컨테이너 |
+
+각 단위의 `dev`·`stg`·`prod` Dockerfile과 환경변수, 실행 명령은 후속 단계에서
+정의한다. 아래는 개발 환경(컨테이너·에이전트·문서 게이트) 명령이다.
 
 ## Privilege boundary
 
