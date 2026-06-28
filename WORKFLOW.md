@@ -51,7 +51,7 @@ sensitivity: public
 - [AGENTS.md](AGENTS.md): Codex 거버넌스
 - [CLAUDE.md](CLAUDE.md): Claude 거버넌스
 - [app/README.md](app/README.md): 향후 애플리케이션 경계
-- [활성 WIP](wip/task-20260628-folder-governance/README.md): 폴더 관리 체계 이식 진행 상황
+- [다음 WIP](wip/task-20260628-side-project-expansion/README.md): 사이드 프로젝트 문서 이식 및 컨테이너 분리 (대기 중)
 
 ## 현재 범위
 
