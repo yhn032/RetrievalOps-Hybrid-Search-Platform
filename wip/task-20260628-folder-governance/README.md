@@ -21,7 +21,7 @@
 - **Scope**: 폴더 및 문서 관리 체계
 - **Out of scope**: Spring Boot, JDK, 빌드 도구, 애플리케이션 모듈 설계, 멀티 디자인 시스템
 - **Anchor**: [사용자 요구사항 원문](anchor.md)
-- **Paused**: 2026-06-28, 후속 계획 기록을 위해 사용자 요청으로 일시 중지
+- **Resumed**: 2026-06-28, 후속 계획 기록 후 P4 재개
 - **Follow-up**: [사이드 프로젝트 문서 이식 및 컨테이너 분리 WIP](../task-20260628-side-project-expansion/README.md)
 
 ## Done
@@ -41,12 +41,13 @@
 | P3 | 문서 gate 및 연결성 검사 구현 | 2026-06-28 | workflow·링크 검사를 completion checker와 commit gate에 통합 |
 | P3.1 | 양·음성 fixture 검사 | 2026-06-28 | 정상 경로와 11개 위반/허용 시나리오, 13 PASS / 0 FAIL |
 | P3.2 | P3 전체 검증 | 2026-06-28 | 126 PASS / 0 FAIL, 문서 32개 도달, simulated commit gate 통과 |
+| P4 | 공개 문서 재배치와 루트 정리 | 2026-06-28 | 원본 분석을 `docs/derived/`에 정착하고 루트 유지 기준 확정 |
+| P4.1 | P4 집중 검사 | 2026-06-28 | 원본 격리, 루트 정책, 관리 문서 15개, 링크 35개 확인 |
 
 ## Remaining
 
 | # | Task | Blocked By | Priority | Notes |
 |---|---|---|---|---|
-| P4 | 공개 문서 재배치와 루트 정리 | P3 | MEDIUM | 기존 거버넌스 문서는 루트 유지 |
 | P5 | 계획–구현 gap 최종 점검 및 WIP 종료 | P4 | HIGH | 모든 완료 조건 검증 |
 
 ## Dependencies
@@ -69,6 +70,7 @@ P0 → P1 → P2 → P3 → P4 → P5
 | 2026-06-28 | 승인 문서가 생길 때까지 기준본을 만들지 않음 | `template`·`drafted`를 기준본으로 고정하면 승인 의미가 사라짐 | 현재 초안을 즉시 기준본으로 복사 |
 | 2026-06-28 | workflow 검사는 staged 변경마다 실행 | 시간 기반 marker만 사용하면 새 staged 변경이 검사를 우회할 수 있음 | completion checker 실행 시에만 검사 |
 | 2026-06-28 | 기준본 사유는 commit 명령의 `Rebaseline:`으로 전달 | pre-commit 시점에는 완성된 commit 객체가 없음 | 기준본 검사를 commit 이후로 연기 |
+| 2026-06-28 | 루트 프로젝트 문서의 내용 재작성은 후속 WIP로 이관 | 업로드 예정 Markdown 2개를 분석해야 실제 프로젝트 내용을 반영할 수 있음 | 현재 템플릿 내용을 추측해 선행 수정 |
 
 ## Plan–Implementation Gap
 
@@ -78,7 +80,7 @@ P0 → P1 → P2 → P3 → P4 → P5
 | G1 | 생애주기 라우터와 상태 관리 | 계획대로 구현 | 없음 | 라우터·상태표·단계 문서 검사 | closed |
 | G2 | 메타데이터와 기준본 절차 | 계획대로 구현 | 없음 | 14개 문서 스키마·상태·기준본 절차 검사 | closed |
 | G3 | 자동 gate | 계획대로 구현 | 없음 | 정적 검사·링크 그래프·fixture·commit gate 검사 | closed |
-| G4 | 문서 재배치와 루트 정리 | 원본 DOCX 이동 완료 | 공개 문서 재배치 미완료 | Phase 4 | partial |
+| G4 | 문서 재배치와 루트 정리 | 계획대로 구현 | 없음 | 파생 분석 문서·source ID·루트 허용 목록 검사 | closed |
 
 ## Files Modified
 
@@ -101,6 +103,8 @@ P0 → P1 → P2 → P3 → P4 → P5
 | `/workspaces` | `.claude/hooks/pre-commit-gate.sh` | modified |
 | `/workspaces` | `.codex/hooks/pre-commit-gate.sh` | modified |
 | `/workspaces` | `REFERENCE.md`, `WORKFLOW.md` | usage documented |
+| `/workspaces` | `docs/derived/folder-governance-analysis.md` | created |
+| `/workspaces` | `docs/derived/README.md` | modified |
 | `/workspaces` | `wip/task-20260628-folder-governance/README.md` | created |
 | `/workspaces` | `wip/task-20260628-folder-governance/anchor.md` | created |
 
