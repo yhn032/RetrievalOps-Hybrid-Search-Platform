@@ -81,12 +81,12 @@ app/
 | P3 | 아키텍처 및 모듈 경계 ADR 작성 | 2026-06-28 | ADR 6종, 적대적 검토 후 원본 정합성 2건 보정 |
 | P4 | 루트 프로젝트 문서 재작성 | 2026-06-28 | README·PROJECT 전면 재작성, REFERENCE 재구성+app 절, 검증 126 PASS |
 | P5 | 기능별 컨테이너 배포 단위 확정 | 2026-06-28 | app/ 6개 단위(코드 3·인프라 3) README로 확정 |
+| P6 | dev·stg·prod Docker·환경변수 구성 | 2026-06-28 | 36파일(Dockerfile 18·.env.example 18), 비밀 placeholder·.env 미추적 |
 
 ## Remaining
 
 | # | Task | Blocked By | Priority | Notes |
 |---|---|---|---|---|
-| P6 | dev·stg·prod Docker·환경변수 구성 | P5 | HIGH | 비밀정보는 추적하지 않음 |
 | P7 | VS Code 디버깅·배포 분리와 runtime 규칙 적용 | P6 | HIGH | non-root·UID/GID·timezone·UTF-8 |
 | P8 | 링크·검증·계획 gap 최종 점검 | P4, P7 | HIGH | WIP 종료 조건 확인 |
 
@@ -133,6 +133,7 @@ B0 + B1 → P0 → P1 ─┬→ P2 ─┐
 | P3 | 아키텍처·모듈·기술 ADR 6종 | ADR 6종 작성·적대적 검토, 원본 정합성 오류 2건 보정 | MQ·색인 워커 언어 결정 잠정(포트폴리오 강조점 따라 재검토), Java 비동기 시연 미반영, 데이터셋 선정 ADR은 M0 실행 시로 위임, MariaDB 실무 근거 미확정 | open |
 | P4 | 루트 README·PROJECT·REFERENCE 재작성 | README·PROJECT 전면 재작성, REFERENCE는 운영 명령 보존 위해 재구성+app 절 | REFERENCE에 폴리에이전트 인프라 설명 잔존, CLAUDE/AGENTS는 템플릿 거버넌스 서술 유지(저장소 이중 정체성) | open |
 | P5 | 기능별 컨테이너 배포 단위 확정 | app/ 6개 단위 디렉터리+README 생성, 책임·기술·성격 명시 | 실제 Dockerfile·환경변수·실행 미생성(P6~P7로 분리) | open |
+| P6 | dev·stg·prod Docker·환경변수 | 36파일 생성, non-root·TZ·UTF-8·HOST_UID/GID 규약 적용 | 앱 코드가 M1 이후라 코드 유닛 빌드/COPY/CMD가 TODO(M1) 자리표시자, infra config 파일도 미생성, 런타임 규칙을 P7 대신 P6 Dockerfile에 선반영 | open |
 
 ## Files Modified
 
@@ -149,6 +150,7 @@ B0 + B1 → P0 → P1 ─┬→ P2 ─┐
 | `/workspaces` | `PROJECT.md` | rewritten (P4) |
 | `/workspaces` | `REFERENCE.md` | reframed+app 절 (P4) |
 | `/workspaces` | `app/README.md` 및 `app/<unit>/README.md` 6종 | created (P5) |
+| `/workspaces` | `app/<unit>/{dev,stg,prod}/Dockerfile`·`.env.example` 36종 | created (P6) |
 
 ## Unpushed Commits
 
