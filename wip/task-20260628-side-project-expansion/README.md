@@ -76,12 +76,12 @@ app/
 | B0 | 선행 폴더 관리 WIP 종료 | 2026-06-28 | P5 종료 감사 후 디렉터리 삭제 |
 | B1 | Markdown 원본 2개 업로드 | 2026-06-28 | charter·resume-evidence를 intake에 격리 |
 | P0 | 원본 격리·분석 및 문서 배치표 확정 | 2026-06-28 | source ID 부여, 저장소 성격 확정, 복사 금지 |
+| P1 | 요구사항과 파생 분석 문서 작성 | 2026-06-28 | FR 8개·NFR 9개, 기술 선택은 ADR로 위임 |
 
 ## Remaining
 
 | # | Task | Blocked By | Priority | Notes |
 |---|---|---|---|---|
-| P1 | 요구사항과 파생 분석 문서 작성 | P0 | HIGH | 현재 메타데이터·출처 규칙 적용 |
 | P2 | M0·M2·M4 평가 계약 작성 | P1 | HIGH | 평가 데이터와 측정 조건 포함 |
 | P3 | 아키텍처 및 모듈 경계 ADR 작성 | P1 | HIGH | 선택 근거와 대안 기록 |
 | P4 | 루트 프로젝트 문서 재작성 | P2, P3 | HIGH | README·PROJECT·REFERENCE |
@@ -128,6 +128,7 @@ B0 + B1 → P0 → P1 ─┬→ P2 ─┐
 | 페이즈 | 계획 | 실제 구현 | gap | 상태 |
 |---|---|---|---|---|
 | P0 | 원본 격리·분석, 문서 배치표 확정 | derived 분석 문서에 배치표 통합, 저장소 성격 확정 절 추가 | 배치표를 독립 산출물로 분리하지 않음 | open |
+| P1 | 요구사항·파생 분석 문서 작성 | FR·NFR 표 작성, 정량 목표값은 평가계약으로 위임 | 요구사항에 목표 수치(목표 Recall@k·p95 임계) 미포함 | open |
 
 ## Files Modified
 
@@ -136,6 +137,7 @@ B0 + B1 → P0 → P1 ─┬→ P2 ─┐
 | `/workspaces` | `wip/task-20260628-side-project-expansion/README.md` | created |
 | `/workspaces` | `wip/task-20260628-side-project-expansion/anchor.md` | created |
 | `/workspaces` | `docs/derived/side-project-source-analysis.md` | created (P0) |
+| `/workspaces` | `docs/derived/side-project-requirements.md` | created (P1) |
 
 ## Unpushed Commits
 
