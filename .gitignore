@@ -1,0 +1,76 @@
+# =============================================================================
+# Polyagent DevContainer - Git Ignore
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# 환경 설정 (민감 정보)
+# -----------------------------------------------------------------------------
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# -----------------------------------------------------------------------------
+# Node.js
+# -----------------------------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# -----------------------------------------------------------------------------
+# VS Code
+# -----------------------------------------------------------------------------
+.vscode/settings.local.json
+*.code-workspace
+
+# -----------------------------------------------------------------------------
+# Claude Code (런타임 마커 — 커밋 불필요)
+# -----------------------------------------------------------------------------
+.claude/.last-verification*
+.claude/.last-push-url*
+.claude/.stop-blocked*
+.claude/.refinement-active
+.claude/.refine-output
+.claude/.refine-eval.json
+.claude/.update-check-cache
+.claude/.error-log
+.claude/.tool-call-counter
+.claude/settings.local.json
+.claude/worktrees/
+.mcp.json
+
+# -----------------------------------------------------------------------------
+# Codex CLI (런타임 마커 — 커밋 불필요, .gitkeep 만 유지)
+# -----------------------------------------------------------------------------
+.codex/state/last-verification*
+.codex/state/last-push-url*
+.codex/state/stop-blocked*
+.codex/state/refinement-active
+.codex/state/.refine-output
+.codex/state/.refine-eval.json
+.codex/state/refinement/
+.codex/push-remote
+
+# -----------------------------------------------------------------------------
+# 기타
+# -----------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.temp
+*.bak
+*~
+.claude/agent-memory/refinement/
+
+# Serena MCP — per-project state (auto-generated, do not track)
+.serena/
+
+# -----------------------------------------------------------------------------
+# GitLab CI pull-mirror template — local-only (not shipped tracked)
+# -----------------------------------------------------------------------------
+# Its scheduled pipeline force-resets to an upstream and force-pushes, which
+# would overwrite any consumer repo that registers a Runner + schedule. Kept
+# locally for manual mirror wiring; never tracked/pushed. See PROJECT.md.
+/.gitlab-ci.yml

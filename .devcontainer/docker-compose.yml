@@ -1,0 +1,66 @@
+# =============================================================================
+# RetrievalOps-Hybrid-Search-Platform DevContainer — Docker Compose (base variant)
+# =============================================================================
+# 모든 설정은 .env 파일에서 관리합니다.
+#
+# 사용:
+#   docker compose up -d
+#
+# 다중 인스턴스:
+#   cp .env .env.project-b
+#   docker compose --env-file .env.project-b up -d
+# =============================================================================
+
+services:
+  polyagent-devcontainer:
+    container_name: ${CONTAINER_NAME:-polyagent-dev}
+    image: ${IMAGE_NAME:-polyagent-devcontainer}:${IMAGE_TAG:-latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - PROJECT_NODE_VERSION=${PROJECT_NODE_VERSION:-}
+
+    volumes:
+      - ${HOST_WORKSPACE_PATH:-..}:/workspaces:cached
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Persistence — single source for BOTH entry paths.
+      # devcontainer.json does not re-declare these, so plain `docker compose up`
+      # and VS Code "Reopen in Container" share the same COMPOSE_PROJECT_NAME-scoped
+      # volumes and preserve auth tokens + history identically across rebuild.
+      - claude-config:/home/vscode/.claude
+      - codex-config:/home/vscode/.codex
+      - command-history:/commandhistory
+
+    # =========================================================================
+    # DNS — Docker Desktop 내부 DNS에 의존하지 않음
+    # Windows/WSL2에서 Docker Desktop DNS(192.168.65.x) 해석 실패 방지
+    # =========================================================================
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+      - 1.1.1.1
+
+    environment:
+      - TZ=${TZ:-UTC}
+
+    stdin_open: true
+    tty: true
+
+    healthcheck:
+      test: ["CMD-SHELL", "claude --version >/dev/null 2>&1 && SKIP_CODEX_UPDATE=1 codex --version >/dev/null 2>&1 && { test -d /workspaces/.git || test -f /workspaces/AGENTS.md || test -f /workspaces/CLAUDE.md || test -f /workspaces/README.md || test -d /workspaces/.devcontainer; }"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+    # command는 Dockerfile CMD ["sleep", "infinity"]가 담당
+    # ENTRYPOINT가 항상 setup-env.sh를 실행한 후 CMD를 exec함
+
+# Named volumes (declared at the project level; created with the
+# COMPOSE_PROJECT_NAME prefix). These are the single persistence source for
+# both entry paths — change COMPOSE_PROJECT_NAME in .env to isolate instances.
+volumes:
+  claude-config:
+  codex-config:
+  command-history:
