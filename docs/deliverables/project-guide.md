@@ -22,11 +22,12 @@ sensitivity: public
 
 ## 아키텍처 한눈에
 
-8개 배포 단위가 각각 컨테이너로 기동한다(근거: [ADR](adr/README.md)).
+9개 배포 단위가 각각 컨테이너로 기동한다(근거: [ADR](adr/README.md)).
 
 | 구분 | 단위 | 기술 |
 |---|---|---|
-| 코드 수정 단위 | api-service | Java · Spring Boot |
+| 코드 수정 단위 | web-ui | 웹 프론트엔드(검색 화면·색인 대시보드) |
+| | api-service | Java · Spring Boot |
 | | retrieval-service | Python · FastAPI |
 | | model-serving | Python · FastAPI (임베딩·Reranker) |
 | | index-worker | Java (비동기 색인) |

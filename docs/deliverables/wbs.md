@@ -18,7 +18,7 @@ sensitivity: public
 담당 범례: **F** 에이전트 프레임워크·스캐폴드 · **D** 에이전트 설계·문서 ·
 **C** 사용자 코드+테스트 구현 · **R** 에이전트 리뷰.
 
-대상 배포 단위(8): api-service, retrieval-service, model-serving, index-worker(Java),
+대상 배포 단위(9): web-ui, api-service, retrieval-service, model-serving, index-worker(Java),
 search-store, metadata-store, cache, message-queue(RabbitMQ).
 
 ## M0 — 범위·설계

@@ -20,6 +20,7 @@ sensitivity: public
 
 | 단위 | 책임 | 인바운드 | 의존(아웃바운드) |
 |---|---|---|---|
+| web-ui (프론트엔드) | 검색 화면·색인 상태 대시보드 | REST(브라우저) | api-service |
 | api-service (Spring) | 검색·색인 요청 진입점, 작업 상태, 캐시 정책 | REST | cache·metadata-store·retrieval-service·message-queue |
 | retrieval-service (FastAPI) | Dense·Hybrid 결합, 검색 오케스트레이션 | REST | search-store·model-serving |
 | model-serving (FastAPI) | 임베딩·Reranker 모델 추론 | REST | (GPU/모델 런타임) |
@@ -28,6 +29,41 @@ sensitivity: public
 | metadata-store (MariaDB) | 문서·청크·작업 메타데이터 | TCP(3306) | — |
 | cache (Redis) | 검색 응답 캐시·무효화 | TCP(6379) | — |
 | message-queue (RabbitMQ) | 색인 작업 큐·재시도·DLQ | AMQP(5672) | — |
+
+## 아키텍처 구조도
+
+```mermaid
+graph TD
+    Client([Client])
+    subgraph code["코드 수정 단위"]
+        UI["web-ui<br/>검색 화면·색인 대시보드"]
+        API["api-service<br/>(Spring Boot)"]
+        RET["retrieval-service<br/>(FastAPI)"]
+        MODEL["model-serving<br/>(FastAPI·임베딩/Reranker)"]
+        WORK["index-worker<br/>(Java)"]
+    end
+    subgraph infra["인프라 컨테이너"]
+        CACHE[("cache · Redis")]
+        META[("metadata-store · MariaDB")]
+        SEARCH[("search-store · OpenSearch")]
+        MQ[["message-queue · RabbitMQ"]]
+    end
+    Client --> UI
+    UI -->|REST| API
+    API -->|캐시| CACHE
+    API -->|메타·작업상태| META
+    API -->|검색 위임| RET
+    API -->|색인작업 발행| MQ
+    RET -->|BM25·벡터| SEARCH
+    RET -->|임베딩·Rerank| MODEL
+    MQ -->|소비| WORK
+    WORK -->|임베딩| MODEL
+    WORK -->|색인| SEARCH
+    WORK -->|작업상태| META
+```
+
+검색 경로 가용성은 메시지 큐가 아니라 복제·캐시·rate limit·서킷브레이커로 확보하며,
+메시지 큐는 색인 경로에 한정한다([ADR-0008](adr/0008-search-availability.md)).
 
 ## 인터페이스 계약 (초안)
 

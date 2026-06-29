@@ -9,8 +9,8 @@
 ## 아키텍처
 
 ```text
-Client
-  -> api-service (Spring Boot)
+Client -> web-ui (검색 화면·색인 대시보드) -> api-service (Spring Boot)
+api-service
        -> cache (Redis)
        -> metadata-store (MariaDB)
        -> search-store (OpenSearch: BM25·벡터·Hybrid)

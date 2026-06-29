@@ -119,6 +119,8 @@ B0 + B1 → P0 → P1 ─┬→ P2 ─┐
 | 2026-06-29 | 모델 서빙(임베딩·Reranker)을 별도 컨테이너로 분리 | anchor의 "모델도 별도 컨테이너" 충실, vLLM/GPU 모델 서빙을 포트폴리오로 노출 | retrieval-service in-process 유지 |
 | 2026-06-29 | MariaDB는 공식 entrypoint의 표준 권한 드롭을 수용하고 검사를 보강 | MariaDB 표준 패턴 존중, initdb chown 깨짐 회피 | USER mysql 강제 + 사전 소유권 |
 | 2026-06-29 | 메시지 큐 RabbitMQ 채택, 색인 워커를 Java로 전환 | 이력서의 RabbitMQ·Spring 비동기 역량 노출, 모델 분리로 워커의 임베딩 의존 감소 | DB 작업 테이블·Python 워커 유지 |
+| 2026-06-29 | 검색 UI·색인 대시보드(web-ui) 추가, 03 UI 포함 | 클라이언트 검색 호출과 색인 상태 관측 화면이 필요 | UI 없이 API 소비자만 |
+| 2026-06-29 | 검색 경로 가용성은 큐가 아니라 복제·캐시·서킷브레이커로 확보(ADR-0008) | 동기·멱등 검색에 큐 버퍼링은 지연 증가·유실 방지 무의미 | 검색 요청을 메시지 큐로 버퍼링 |
 
 ## Plan–Implementation Gap
 

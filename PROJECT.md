@@ -28,6 +28,7 @@
 
 | 모듈 | 기술 | 근거 |
 |---|---|---|
+| web-ui | 웹 프론트엔드(검색 화면·색인 대시보드, 기술 추후) | [ADR-0001](docs/deliverables/adr/0001-architecture-and-module-boundary.md) |
 | api-service | Java · Spring Boot | [ADR-0001](docs/deliverables/adr/0001-architecture-and-module-boundary.md) |
 | retrieval-service | Python · FastAPI | [ADR-0001](docs/deliverables/adr/0001-architecture-and-module-boundary.md) |
 | model-serving | Python · FastAPI (임베딩·Reranker) | [ADR-0007](docs/deliverables/adr/0007-model-serving.md) |
