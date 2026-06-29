@@ -85,6 +85,7 @@ app/
 | P7 | VS Code 디버깅·배포 분리·runtime 규칙 | 2026-06-28 | 코드 단위 3종 devcontainer, 런타임/배포 문서, 규칙 검사 18 PASS |
 | P8 | 링크·검증·계획 gap 최종 점검 | 2026-06-28 | 검증 green(126·gate·link·runtime), 적대적 감사로 미기록 gap 5건 적발·기록 |
 | GR1 | 즉시 가능 gap 1차 해소 | 2026-06-29 | P0·G-P8-2·G-P8-4·G-P8-5 해소, runtime 검사 게이트 연동(P7 일부) |
+| GR2 | 설계·WBS·협업 워크플로 수립 | 2026-06-29 | system-design·wbs·collaboration-workflow 신설(8단위 반영), 구현·테스트는 사용자 |
 
 ## Remaining
 

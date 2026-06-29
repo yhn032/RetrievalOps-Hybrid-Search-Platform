@@ -50,12 +50,18 @@ sensitivity: public
 - [REFERENCE.md](REFERENCE.md): 실행 명령과 운영 절차
 - [AGENTS.md](AGENTS.md): Codex 거버넌스
 - [CLAUDE.md](CLAUDE.md): Claude 거버넌스
-- [app/README.md](app/README.md): 향후 애플리케이션 경계
+- [app/README.md](app/README.md): 애플리케이션 배포 단위
 - [다음 WIP](wip/task-20260628-side-project-expansion/README.md): 사이드 프로젝트 문서 이식 및 컨테이너 분리 (대기 중)
+
+## 설계·협업
+
+- [시스템 설계](docs/deliverables/system-design.md): 컨테이너 책임·인터페이스·데이터·흐름
+- [WBS](docs/deliverables/wbs.md): 마일스톤별 작업 분해와 담당
+- [협업·개발 워크플로](docs/deliverables/collaboration-workflow.md): 에이전트는 프레임워크·리뷰, 사용자가 코드·테스트
 
 ## 현재 범위
 
-현재 작업은 폴더와 문서 관리 체계만 다룹니다. Spring Boot, JDK, 빌드 도구와 애플리케이션 모듈 구조는 후속 작업에서 결정합니다.
+현재 단계는 RAG Retrieval Platform의 설계·평가 계약·ADR과 컨테이너 프레임워크입니다. 제품 코드와 테스트는 [협업 워크플로](docs/deliverables/collaboration-workflow.md)에 따라 사용자가 구현하고 에이전트가 리뷰합니다.
 
 ## 자동 검사
 

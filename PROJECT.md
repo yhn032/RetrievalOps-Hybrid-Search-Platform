@@ -49,3 +49,10 @@ claude·codex 두 에이전트가 동일 저장소를 패리티로 운영한다.
 기준이고 `.agents/`·`.codex/`는 미러다. `.vscode/`는 에디터 편의 설정으로
 추적하며 에이전트 벤더가 아니다. 컨테이너·검증 명령은
 [REFERENCE.md](REFERENCE.md)를 따른다.
+
+## 협업 모델
+
+에이전트는 프레임워크·설계·WBS·리뷰를 담당하고, 제품 코드와 테스트는 사용자가
+구현한다. 세부 규칙은 [협업·개발 워크플로](docs/deliverables/collaboration-workflow.md),
+작업 분해는 [WBS](docs/deliverables/wbs.md), 설계는
+[시스템 설계](docs/deliverables/system-design.md)를 따른다.
