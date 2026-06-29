@@ -11,6 +11,9 @@ sensitivity: public
 
 # WBS (작업 분해 구조)
 
+> ⚠️ 전환 예정: 이 WBS는 추후 markdown 표가 아닌 간트차트(예: Mermaid `gantt`)로
+> 재작성한다. 현재 표 형식은 임시다.
+
 마일스톤별 작업을 배포 단위 기준으로 분해한다. 담당 표기는
 [협업 워크플로](collaboration-workflow.md)를 따른다. 설계 기준은
 [시스템 설계](system-design.md), 측정 기준은 [평가 계약](evaluation-contract.md)이다.

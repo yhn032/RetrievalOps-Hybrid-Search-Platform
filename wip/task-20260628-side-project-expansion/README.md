@@ -1,6 +1,6 @@
 # Task: 사이드 프로젝트 문서 이식 및 컨테이너 분리
 
-## Status: in-progress — P0~P8 문서·스캐폴드 구축 완료, 페이즈별 gap 해소 대기
+## Status: in-progress — 표준 00·01·02 승인 완료. 다음 재개: 03 UI 검토부터 04~09 순차
 
 ## Completion Criteria
 
@@ -87,12 +87,15 @@ app/
 | GR1 | 즉시 가능 gap 1차 해소 | 2026-06-29 | P0·G-P8-2·G-P8-4·G-P8-5 해소, runtime 검사 게이트 연동(P7 일부) |
 | GR2 | 설계·WBS·협업 워크플로 수립 | 2026-06-29 | system-design·wbs·collaboration-workflow 신설(8단위 반영), 구현·테스트는 사용자 |
 | GR3 | 생애주기 표준 00~09 완성 | 2026-06-29 | 단계 표준을 프로젝트 내용으로 작성(template→drafted), 03 UI excluded, MANIFEST 동기화 |
+| GR4 | 표준 00·01·02 승인 + 아키텍처 정합화 | 2026-06-29 | 00·01·02 approved+기준본 생성, web-ui 단위·ADR-0008(검색 HA) 추가, ADR 8→9단위 정합, 03 UI 포함(excluded→drafted) |
 
 ## Remaining
 
 | # | Task | Blocked By | Priority | Notes |
 |---|---|---|---|---|
-| GR | 잔여 gap 해소 | P8 | — | 결정 필요(G-P8-1 모델 분리·P3 강조점·G-P8-3 MariaDB)와 M1 의존(P2·P3·P7 빌드) 남음. 완료 시 완료 조건 충족·WIP 종료 |
+| R0 | 표준 검토·승인 이어가기 | GR4 | HIGH | ★ 재개 지점: **03 UI(drafted)** 검토·승인부터 04~09 순차. 선행 단계 approved 후 다음 진입 |
+| R1 | WBS를 간트차트로 전환 | — | MED | `docs/deliverables/wbs.md`를 markdown 표가 아닌 간트차트(예: Mermaid `gantt`)로 재작성 |
+| GR | 잔여 gap 해소 + app 스캐폴드 구현 | P8 | — | 결정 필요 잔여 없음(반영 완료)·M1 의존(P2·P3·P7 빌드), web-ui·model-serving·message-queue 스캐폴드와 Java 워커 전환은 구현 대기 |
 
 ## Dependencies
 
