@@ -1,5 +1,5 @@
 # =============================================================================
-# RetrievalOps-Hybrid-Search-Platform DevContainer — Docker Compose (base variant)
+# RetrievalOps-Hybrid-Search-Platform Claude Container — Docker Compose (base variant)
 # =============================================================================
 # 모든 설정은 .env 파일에서 관리합니다.
 #
@@ -12,7 +12,7 @@
 # =============================================================================
 
 services:
-  polyagent-devcontainer:
+  retrievalops-hybrid-search-platform-claude:
     container_name: ${CONTAINER_NAME:-polyagent-dev}
     image: ${IMAGE_NAME:-polyagent-devcontainer}:${IMAGE_TAG:-latest}
     build:

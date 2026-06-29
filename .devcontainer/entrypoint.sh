@@ -1,6 +1,6 @@
 #!/bin/bash
 # =============================================================================
-# RetrievalOps-Hybrid-Search-Platform DevContainer — Container Entrypoint
+# RetrievalOps-Hybrid-Search-Platform Claude Container — Container Entrypoint
 # =============================================================================
 # Runs on every container start. Both `docker compose up -d` and VS Code's
 # "Reopen in Container" path through this script, so environment setup is

@@ -49,7 +49,7 @@ compose_run_probe() {
             COMPOSE_PROJECT_NAME="$project" HOST_WORKSPACE_PATH="$host_workspace" \
             docker compose run --rm --no-deps \
                 -e SKIP_CLAUDE_UPDATE=1 -e SKIP_CODEX_UPDATE=1 \
-                --entrypoint bash polyagent-devcontainer -lc "$*"
+                --entrypoint bash retrievalops-hybrid-search-platform-claude -lc "$*"
     )
 }
 compose_cleanup() {

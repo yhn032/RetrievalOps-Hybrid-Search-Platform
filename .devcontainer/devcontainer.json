@@ -1,6 +1,6 @@
 {
   // ==========================================================================
-  // RetrievalOps-Hybrid-Search-Platform DevContainer — Universal Base Template
+  // RetrievalOps-Hybrid-Search-Platform Claude Container — Universal Base Template
   // ==========================================================================
   // 표준 근거:
   //   - DevContainer Specification: https://containers.dev/implementors/json_reference/
@@ -10,7 +10,7 @@
 
   "name": "RetrievalOps-Hybrid-Search-Platform Claude Container",
   "dockerComposeFile": "docker-compose.yml",
-  "service": "retrievalops-hybrid-search-platform-claude-container",
+  "service": "retrievalops-hybrid-search-platform-claude",
   "workspaceFolder": "/workspaces",
 
   // ==========================================================================

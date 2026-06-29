@@ -1,6 +1,6 @@
 #!/bin/bash
 # =============================================================================
-# RetrievalOps-Hybrid-Search-Platform DevContainer — Environment Setup (postCreateCommand)
+# RetrievalOps-Hybrid-Search-Platform Claude Container — Environment Setup (postCreateCommand)
 # =============================================================================
 set -e
 
@@ -20,7 +20,7 @@ workspace_marker_ok() {
 }
 
 echo "=============================================="
-echo "  RetrievalOps-Hybrid-Search-Platform DevContainer Setup"
+echo "  RetrievalOps-Hybrid-Search-Platform Claude Container Setup"
 echo "=============================================="
 echo ""
 
