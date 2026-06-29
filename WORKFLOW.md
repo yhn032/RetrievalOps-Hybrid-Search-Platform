@@ -55,6 +55,7 @@ sensitivity: public
 
 ## 설계·협업
 
+- [프로젝트 가이드](docs/deliverables/project-guide.md): 전체 그림과 문서 길잡이
 - [시스템 설계](docs/deliverables/system-design.md): 컨테이너 책임·인터페이스·데이터·흐름
 - [WBS](docs/deliverables/wbs.md): 마일스톤별 작업 분해와 담당
 - [협업·개발 워크플로](docs/deliverables/collaboration-workflow.md): 에이전트는 프레임워크·리뷰, 사용자가 코드·테스트

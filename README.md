@@ -33,6 +33,7 @@ Client
 
 ## 문서
 
+- [프로젝트 가이드](docs/deliverables/project-guide.md) — 전체 그림과 길잡이(여기부터)
 - [요구사항](docs/derived/side-project-requirements.md)
 - [평가 계약 (M0·M2·M4)](docs/deliverables/evaluation-contract.md)
 - [아키텍처 결정 기록 (ADR)](docs/deliverables/adr/README.md)
