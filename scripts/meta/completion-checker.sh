@@ -15,6 +15,7 @@ VERIFY="$PROJECT_DIR/.devcontainer/verify-template.sh"
 WORKFLOW_GATE="$PROJECT_DIR/scripts/meta/workflow-gate.sh"
 DOCS_LINK_CHECK="$PROJECT_DIR/scripts/meta/docs-link-check.sh"
 WORKFLOW_GATE_TEST="$PROJECT_DIR/scripts/meta/workflow-gate-test.sh"
+RUNTIME_RULES_CHECK="$PROJECT_DIR/scripts/meta/runtime-rules-check.sh"
 
 if [ ! -x "$VERIFY" ] && [ ! -f "$VERIFY" ]; then
     echo "ERROR: $VERIFY not found." >&2
@@ -26,6 +27,9 @@ PROJECT_DIR="$PROJECT_DIR" bash "$VERIFY"
 bash "$WORKFLOW_GATE" "$PROJECT_DIR"
 bash "$DOCS_LINK_CHECK" "$PROJECT_DIR"
 bash "$WORKFLOW_GATE_TEST" "$PROJECT_DIR"
+if [ -d "$PROJECT_DIR/app" ]; then
+    bash "$RUNTIME_RULES_CHECK" "$PROJECT_DIR"
+fi
 RC=0
 
 # Marker write follows the active vendor's pre-commit gate.

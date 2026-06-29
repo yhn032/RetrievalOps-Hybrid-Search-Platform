@@ -4,7 +4,7 @@ role: deliverable
 stage: "08"
 status: drafted
 owner: yhn032
-updated: 2026-06-28
+updated: 2026-06-29
 source: intake-side-project-charter
 sensitivity: public
 ---
@@ -25,6 +25,11 @@ sensitivity: public
 | 인코딩 | `LANG=C.UTF-8`, `LC_ALL=C.UTF-8` |
 | 비루트 실행 | 코드 단위는 `USER app`, 인프라 단위는 공식 이미지의 비루트 사용자 |
 | 호스트 권한 | 코드 단위 Dockerfile은 `HOST_UID`/`HOST_GID` 인자로 호스트와 동일 권한 유지 |
+
+인프라 단위(search-store·metadata-store·cache)는 소스를 바인드 마운트하지 않고
+named volume를 사용하므로 호스트 UID/GID 정합이 필요하지 않다. 따라서 호스트 권한
+정합은 코드 수정 단위에만 적용하며, 이는 anchor의 "모든 컨테이너" 문구를 코드 단위로
+좁힌 의도적 결정이다. 인프라 단위는 공식 이미지의 고정 비루트 사용자로 기동한다.
 
 ## 개발·배포 이미지 분리
 

@@ -4,7 +4,7 @@ role: deliverable
 stage: "02"
 status: drafted
 owner: yhn032
-updated: 2026-06-28
+updated: 2026-06-29
 source: intake-side-project-charter
 sensitivity: public
 ---
@@ -28,14 +28,14 @@ Client
        -> metadata-store (관계형 DB)
        -> search-store (OpenSearch)
        -> retrieval-service (FastAPI 임베딩/Reranker)
-  -> index-worker: collect -> parse -> chunk -> embed -> index
+  -> index-worker: 수집 → 파싱 → 청킹 → 임베딩 → 색인
 ```
 
 모듈 경계는 6개이며, 각 모듈이 하나의 컨테이너 배포 단위가 된다.
 
 | 모듈 | 책임 | 배포 성격 |
 |---|---|---|
-| `api-service` | 검색 API, 작업 상태, 캐시 정책 | 코드 수정 단위 |
+| `api-service` | 검색 질의 처리·작업 상태 노출·캐시 정책 적용 | 코드 수정 단위 |
 | `retrieval-service` | 임베딩·Reranker·평가 | 코드 수정 단위 |
 | `index-worker` | 수집·청킹·재시도·색인 | 코드 수정 단위 |
 | `search-store` | BM25·벡터·Hybrid 검색 | 인프라 컨테이너 |
