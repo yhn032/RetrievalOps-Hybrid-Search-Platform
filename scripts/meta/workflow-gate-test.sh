@@ -165,6 +165,12 @@ sensitive_md="$(make_fixture sensitive-md)"
 printf '# 원본\n전달받은 미추적 원본 자료.\n' > "$sensitive_md/docs/intake/ORIGINAL.md"
 expect_pass "untracked sensitive .md ignored by link check" bash "$LINK_CHECK" "$sensitive_md"
 
+# 기준본 스냅샷(_baseline의 README 외 .md)은 더 깊은 경로라 상대 링크가 깨지지만
+# 링크 그래프 후보가 아니므로 검사에서 제외되어야 한다.
+baseline_md="$(make_fixture baseline-snapshot)"
+printf '# 스냅샷\n[깨진링크](../../nope.md)\n' > "$baseline_md/docs/standards/_baseline/00-common.md"
+expect_pass "baseline snapshot excluded from link check" bash "$LINK_CHECK" "$baseline_md"
+
 # PROJECT_DIR 경로 자체에 민감 세그먼트(/docs/intake/ 등)가 포함돼도 관리 디렉터리의
 # 진짜 orphan을 놓치지 않아야 한다. 절대 경로가 아닌 저장소 상대 경로로 판정하는지 검증.
 poisoned="$(make_fixture poisoned "$TMP_ROOT/docs/intake/host/proj")"

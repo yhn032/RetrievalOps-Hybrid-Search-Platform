@@ -25,8 +25,13 @@ candidate_files() {
         {
             rel = $0
             if (substr(rel, 1, length(root)) == root) rel = substr(rel, length(root) + 1)
-            if (rel ~ /^docs\/(intake|origin|internal|inbox)\// &&
-                rel !~ /^docs\/(intake|origin|internal|inbox)\/README\.md$/) next
+            base = rel; sub(/.*\//, "", base)
+            # default-deny 민감 경로: 최상위 README.md 라우팅 문서만 후보로 유지한다.
+            if (rel ~ /^docs\/(intake|origin|internal|inbox)\// && base != "README.md") next
+            # 기준본 스냅샷: 승인본의 바이트 동일 복사본이라 workflow-gate의 cmp로
+            # 검증하며 링크 그래프의 탐색 노드가 아니다(더 깊은 경로라 상대 링크가
+            # 깨진다). README만 후보로 둔다.
+            if (rel ~ /^docs\/standards\/_baseline\// && base != "README.md") next
             print
         }
     '
