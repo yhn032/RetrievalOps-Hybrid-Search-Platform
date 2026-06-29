@@ -4,7 +4,7 @@ role: deliverable
 stage: "02"
 status: drafted
 owner: yhn032
-updated: 2026-06-28
+updated: 2026-06-29
 source: intake-side-project-charter
 sensitivity: public
 ---
@@ -18,21 +18,22 @@ Python 또는 Java 중 M0에서 결정하도록 했다.
 
 ## 결정
 
-색인 워커를 Python으로 구현한다.
+색인 워커를 Java(Spring 기반 비동기·재시도)로 구현한다.
 
 ## 근거
 
-- 임베딩·청킹·문서 파싱 생태계가 Python 중심이며 retrieval-service(FastAPI)와
-  의존성을 공유할 수 있다.
-- 임베딩 단계를 Java로 옮기면 임베딩 스택이 중복된다.
+- 모델 임베딩이 model-serving으로 분리([ADR-0007](0007-model-serving.md))되어 워커는
+  수집·파싱·청킹·색인 오케스트레이션과 재시도에 집중한다. Python 임베딩 스택을
+  워커에 둘 이유가 줄었다.
+- api-service와 같은 Java·Spring 스택을 공유하고, Spring 비동기·재시도·메시징
+  (RabbitMQ, [ADR-0004](0004-message-queue.md)) 운영 역량을 포트폴리오로 보여준다.
 
 ## 대안
 
-- Java 구현: Spring 비동기·재시도 역량을 함께 보여줄 수 있으나, 임베딩 의존성
-  중복으로 기각. Java 비동기 시연을 우선한다면 재검토할 수 있는 잠정 결정이다.
+- Python 구현: 임베딩 생태계와 가깝지만 모델 분리 후 이점이 줄고 Java 비동기 시연
+  기회를 잃어 기각.
 
 ## 결과
 
-- index-worker는 retrieval-service와 Python 의존성을 공유한다.
-- api-service는 Java로 유지한다.
-- 이 결정은 잠정이며 포트폴리오 강조점에 따라 재검토할 수 있다.
+- index-worker는 Java·Spring 스택으로 message-queue를 소비한다.
+- 임베딩·Reranker는 model-serving을 호출한다.

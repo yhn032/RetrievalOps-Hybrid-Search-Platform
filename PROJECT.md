@@ -29,11 +29,13 @@
 | 모듈 | 기술 | 근거 |
 |---|---|---|
 | api-service | Java · Spring Boot | [ADR-0001](docs/deliverables/adr/0001-architecture-and-module-boundary.md) |
-| retrieval-service · index-worker | Python · FastAPI | [ADR-0006](docs/deliverables/adr/0006-index-worker-language.md) |
+| retrieval-service | Python · FastAPI | [ADR-0001](docs/deliverables/adr/0001-architecture-and-module-boundary.md) |
+| model-serving | Python · FastAPI (임베딩·Reranker) | [ADR-0007](docs/deliverables/adr/0007-model-serving.md) |
+| index-worker | Java (비동기 색인) | [ADR-0006](docs/deliverables/adr/0006-index-worker-language.md) |
 | search-store | OpenSearch | [ADR-0002](docs/deliverables/adr/0002-use-opensearch.md) |
 | metadata-store | MariaDB | [ADR-0003](docs/deliverables/adr/0003-select-metadata-db.md) |
 | cache | Redis | [ADR-0001](docs/deliverables/adr/0001-architecture-and-module-boundary.md) |
-| 비동기 작업 | DB 작업 테이블 (→ RabbitMQ 업그레이드) | [ADR-0004](docs/deliverables/adr/0004-message-queue.md) |
+| message-queue | RabbitMQ | [ADR-0004](docs/deliverables/adr/0004-message-queue.md) |
 | 배포 | Docker Compose (→ Kubernetes 선택) | [ADR-0005](docs/deliverables/adr/0005-kubernetes-deferral.md) |
 
 ## 컨테이너 경계

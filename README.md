@@ -14,8 +14,9 @@ Client
        -> cache (Redis)
        -> metadata-store (MariaDB)
        -> search-store (OpenSearch: BM25·벡터·Hybrid)
-       -> retrieval-service (FastAPI 임베딩/Reranker)
-  -> index-worker: 수집 → 파싱 → 청킹 → 임베딩 → 색인
+       -> retrieval-service (FastAPI) -> model-serving (임베딩·Reranker)
+       -> message-queue (RabbitMQ) -> index-worker (Java)
+index-worker: 수집 → 파싱 → 청킹 → 임베딩(model-serving 호출) → 색인
 ```
 
 모듈 경계와 선택 근거는 [ADR](docs/deliverables/adr/README.md)에 기록되어 있습니다.
