@@ -150,7 +150,8 @@ for baseline in "$PROJECT_DIR"/docs/standards/_baseline/*.md; do
         fail "${baseline#"$PROJECT_DIR"/}: baseline differs from approved source"
 done
 
-# staged 변경이 있으면 상태-only 변경과 무단 rebaseline을 검사한다.
+# staged 변경이 있으면 상태-only 변경(Rebaseline 사유가 있으면 승인으로 허용)과
+# 무단 rebaseline을 검사한다.
 if git -C "$PROJECT_DIR" rev-parse --verify HEAD >/dev/null 2>&1; then
     while IFS= read -r rel; do
         [ -n "$rel" ] || continue
@@ -159,6 +160,7 @@ if git -C "$PROJECT_DIR" rev-parse --verify HEAD >/dev/null 2>&1; then
         old_status="$(git -C "$PROJECT_DIR" show "HEAD:$rel" | sed -n '1,/^---$/s/^status:[[:space:]]*//p')"
         new_status="$(git -C "$PROJECT_DIR" show ":$rel" | sed -n '1,/^---$/s/^status:[[:space:]]*//p')"
         if [ "$old_status" != "$new_status" ] &&
+            [ "${WORKFLOW_REBASELINE:-0}" != 1 ] &&
             cmp -s \
                 <(git -C "$PROJECT_DIR" show "HEAD:$rel" | sed '/^status:[[:space:]]*/d; /^updated:[[:space:]]*/d') \
                 <(git -C "$PROJECT_DIR" show ":$rel" | sed '/^status:[[:space:]]*/d; /^updated:[[:space:]]*/d'); then

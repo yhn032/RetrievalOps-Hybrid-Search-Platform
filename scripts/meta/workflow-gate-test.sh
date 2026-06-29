@@ -178,6 +178,12 @@ sed -i 's/`template`/`drafted`/' "$status_only/docs/standards/MANIFEST.md"
 git -C "$status_only" add docs/standards
 expect_fail "status-only change detected" bash "$GATE" "$status_only"
 
+status_only_reason="$(make_fixture status-only-reason)"
+sed -i 's/status: template/status: drafted/' "$status_only_reason/docs/standards/00-common.md"
+sed -i 's/`template`/`drafted`/' "$status_only_reason/docs/standards/MANIFEST.md"
+git -C "$status_only_reason" add docs/standards
+expect_pass "status-only change accepted with rebaseline reason" env WORKFLOW_REBASELINE=1 bash "$GATE" "$status_only_reason"
+
 sensitive="$(make_fixture sensitive)"
 printf 'secret\n' > "$sensitive/docs/intake/secret.md"
 git -C "$sensitive" add -f docs/intake/secret.md
