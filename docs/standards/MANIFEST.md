@@ -26,7 +26,7 @@ sensitivity: public
 |---|---|---|---|---|
 | 00 공통 | [00-common.md](00-common.md) | 필수 | `approved` | 공통 기준 승인, 기준본 생성 |
 | 01 수령 | [01-intake.md](01-intake.md) | 필수 | `approved` | 수령·격리 기준 승인, 기준본 생성 |
-| 02 아키텍처 | [02-architecture.md](02-architecture.md) | 필수 | `drafted` | ADR·시스템 설계로 구조 확정 |
+| 02 아키텍처 | [02-architecture.md](02-architecture.md) | 필수 | `approved` | 아키텍처 표준 승인, 기준본 생성 |
 | 03 UI | [03-ui.md](03-ui.md) | 필수 | `drafted` | 검색 화면·색인 대시보드 도입 |
 | 04 API | [04-api.md](04-api.md) | 필수 | `drafted` | 인터페이스 계약·오류 형식 정의 |
 | 05 코딩 | [05-coding.md](05-coding.md) | 필수 | `drafted` | 언어별 구조·변경 단위 기준 |
