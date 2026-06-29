@@ -86,6 +86,7 @@ app/
 | P8 | 링크·검증·계획 gap 최종 점검 | 2026-06-28 | 검증 green(126·gate·link·runtime), 적대적 감사로 미기록 gap 5건 적발·기록 |
 | GR1 | 즉시 가능 gap 1차 해소 | 2026-06-29 | P0·G-P8-2·G-P8-4·G-P8-5 해소, runtime 검사 게이트 연동(P7 일부) |
 | GR2 | 설계·WBS·협업 워크플로 수립 | 2026-06-29 | system-design·wbs·collaboration-workflow 신설(8단위 반영), 구현·테스트는 사용자 |
+| GR3 | 생애주기 표준 00~09 완성 | 2026-06-29 | 단계 표준을 프로젝트 내용으로 작성(template→drafted), 03 UI excluded, MANIFEST 동기화 |
 
 ## Remaining
 

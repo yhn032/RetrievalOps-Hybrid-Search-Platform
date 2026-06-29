@@ -2,9 +2,9 @@
 document-id: standard-08-deployment
 role: standard
 stage: "08"
-status: template
+status: drafted
 owner: yhn032
-updated: 2026-06-28
+updated: 2026-06-29
 source: internal
 sensitivity: public
 ---
@@ -13,13 +13,16 @@ sensitivity: public
 
 ## 목적
 
-환경별 설정, 배포 절차, 검증과 복구 방법을 정의합니다.
+환경별 설정, 배포 절차, 검증과 복구 방법을 정의한다.
 
-## 필수 산출물
+## 적용 기준
 
-- 환경별 설정 경계
-- 배포 및 배포 후 검증 절차
-- rollback 기준과 절차
+- 배포 단위별로 `dev`·`stg`·`prod`를 분리하고 개발 이미지와 배포 이미지를 구분한다
+  ([런타임·배포](../deliverables/runtime-and-deployment.md)).
+- 로컬 운영형은 Docker Compose로 구성하고, Kubernetes는 이후 선택 적용한다
+  ([ADR-0005](../deliverables/adr/0005-kubernetes-deferral.md)).
+- 비밀값 없이 배포 구성을 재현할 수 있어야 한다(`.env.example` + 시크릿 주입).
+- 모든 이미지는 런타임 규칙(비루트·`TZ=UTC`·UTF-8)을 지킨다.
 
 ## 완료 기준
 

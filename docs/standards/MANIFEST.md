@@ -4,7 +4,7 @@ role: standard
 stage: "00"
 status: drafted
 owner: yhn032
-updated: 2026-06-28
+updated: 2026-06-29
 source: internal
 sensitivity: public
 ---
@@ -26,14 +26,14 @@ sensitivity: public
 |---|---|---|---|---|
 | 00 공통 | [00-common.md](00-common.md) | 필수 | `drafted` | 워크플로우와 WIP 운영 시작 |
 | 01 수령 | [01-intake.md](01-intake.md) | 필수 | `drafted` | 원본 문서를 `docs/intake/`로 격리 |
-| 02 아키텍처 | [02-architecture.md](02-architecture.md) | 필수 | `template` | 프로젝트 구조 결정 전 |
-| 03 UI | [03-ui.md](03-ui.md) | 조건부 | `template` | 적용 여부 미결정 |
-| 04 API | [04-api.md](04-api.md) | 필수 | `template` | API 설계 전 |
-| 05 코딩 | [05-coding.md](05-coding.md) | 필수 | `template` | 구현 전 |
-| 06 테스트 | [06-testing.md](06-testing.md) | 필수 | `template` | 테스트 전략 수립 전 |
-| 07 보안 | [07-security.md](07-security.md) | 필수 | `template` | 보안 기준 수립 전 |
-| 08 배포 | [08-deployment.md](08-deployment.md) | 필수 | `template` | 배포 환경 결정 전 |
-| 09 운영 | [09-operations.md](09-operations.md) | 필수 | `template` | 운영 기준 수립 전 |
+| 02 아키텍처 | [02-architecture.md](02-architecture.md) | 필수 | `drafted` | ADR·시스템 설계로 구조 확정 |
+| 03 UI | [03-ui.md](03-ui.md) | 조건부 | `excluded` | 백엔드 서비스로 자체 화면 없음 |
+| 04 API | [04-api.md](04-api.md) | 필수 | `drafted` | 인터페이스 계약·오류 형식 정의 |
+| 05 코딩 | [05-coding.md](05-coding.md) | 필수 | `drafted` | 언어별 구조·변경 단위 기준 |
+| 06 테스트 | [06-testing.md](06-testing.md) | 필수 | `drafted` | 단위·통합·검색 품질 평가 기준 |
+| 07 보안 | [07-security.md](07-security.md) | 필수 | `drafted` | 비밀·비루트·입력 검증 기준 |
+| 08 배포 | [08-deployment.md](08-deployment.md) | 필수 | `drafted` | dev·stg·prod 분리·재현 기준 |
+| 09 운영 | [09-operations.md](09-operations.md) | 필수 | `drafted` | 관측·지표·장애 대응 기준 |
 
 ## 관리 문서
 

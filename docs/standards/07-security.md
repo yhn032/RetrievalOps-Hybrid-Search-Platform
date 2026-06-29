@@ -2,9 +2,9 @@
 document-id: standard-07-security
 role: standard
 stage: "07"
-status: template
+status: drafted
 owner: yhn032
-updated: 2026-06-28
+updated: 2026-06-29
 source: internal
 sensitivity: public
 ---
@@ -13,16 +13,19 @@ sensitivity: public
 
 ## 목적
 
-데이터, 인증정보, 의존성과 외부 연동에서 발생할 위험을 식별하고 통제합니다.
+데이터·인증정보·의존성·외부 연동에서 발생할 위험을 식별하고 통제한다.
 
-## 필수 산출물
+## 적용 기준
 
-- 위협과 신뢰 경계
-- 비밀정보 및 민감 데이터 처리 기준
-- 의존성 취약점 대응 기준
+- 비밀값은 추적하지 않는다: `.env`는 Git에서 제외하고 `.env.example`에는
+  placeholder만 둔다. 실데이터·고객 데이터는 사용하지 않는다(공개 데이터만).
+- 컨테이너는 비루트로 기동하고 코드 단위는 호스트 UID/GID를 맞춘다
+  ([런타임·배포](../deliverables/runtime-and-deployment.md), `runtime-rules-check.sh`).
+- API는 입력을 검증하고 오류 메시지에 민감 정보를 노출하지 않는다.
+- 의존성은 고정·점검하고, 알려진 위험과 수용 근거를 기록한다.
 
 ## 완료 기준
 
-- 민감 데이터가 추적 대상과 분리되어 있다.
-- 인증·인가 실패 흐름이 검증되어 있다.
+- 민감 데이터·비밀값이 추적 대상과 분리되어 있다.
+- 입력 검증과 오류 노출 통제가 적용되어 있다.
 - 알려진 위험과 수용 근거가 기록되어 있다.

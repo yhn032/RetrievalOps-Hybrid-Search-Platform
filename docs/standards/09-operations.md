@@ -2,9 +2,9 @@
 document-id: standard-09-operations
 role: standard
 stage: "09"
-status: template
+status: drafted
 owner: yhn032
-updated: 2026-06-28
+updated: 2026-06-29
 source: internal
 sensitivity: public
 ---
@@ -13,13 +13,15 @@ sensitivity: public
 
 ## 목적
 
-서비스 상태, 로그, 지표, 장애 대응과 변경 이력을 관리합니다.
+서비스 상태·로그·지표·장애 대응과 변경 이력을 관리한다.
 
-## 필수 산출물
+## 적용 기준
 
-- health check와 핵심 지표
-- 로그 및 알림 기준
-- 장애 대응과 운영 절차
+- 각 서비스는 health check 엔드포인트와 구조화 로그를 제공한다.
+- 핵심 지표를 관측한다: 지연 p50/p95, QPS, 오류율, 색인 처리량·실패율, 캐시 적중률
+  ([평가 계약](../deliverables/evaluation-contract.md) M4 기준).
+- 비동기 색인은 작업 상태·재시도·DLQ를 모니터링하고 중복 색인을 방지한다.
+- 로그·메트릭 대시보드와 CI로 변경·상태를 추적한다(M4).
 
 ## 완료 기준
 
