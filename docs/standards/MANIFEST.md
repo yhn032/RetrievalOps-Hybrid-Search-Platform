@@ -24,7 +24,7 @@ sensitivity: public
 
 | 단계 | 표준 | 적용 | 상태 | 근거 또는 배제 사유 |
 |---|---|---|---|---|
-| 00 공통 | [00-common.md](00-common.md) | 필수 | `drafted` | 워크플로우와 WIP 운영 시작 |
+| 00 공통 | [00-common.md](00-common.md) | 필수 | `approved` | 공통 기준 승인, 기준본 생성 |
 | 01 수령 | [01-intake.md](01-intake.md) | 필수 | `drafted` | 원본 문서를 `docs/intake/`로 격리 |
 | 02 아키텍처 | [02-architecture.md](02-architecture.md) | 필수 | `drafted` | ADR·시스템 설계로 구조 확정 |
 | 03 UI | [03-ui.md](03-ui.md) | 조건부 | `excluded` | 백엔드 서비스로 자체 화면 없음 |
