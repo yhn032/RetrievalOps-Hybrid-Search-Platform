@@ -1,6 +1,6 @@
 # Task: 사이드 프로젝트 문서 이식 및 컨테이너 분리
 
-## Status: in-progress — 생애주기 표준 00~09 전체 승인·기준본 완료. 다음 재개: WBS 간트차트 전환(R1)
+## Status: in-progress — 표준 00~09 승인·WBS 간트(Excel) 전환 완료. 잔여: app 스캐폴드 구현(GR, M1 의존)
 
 ## Completion Criteria
 
@@ -89,14 +89,15 @@ app/
 | GR3 | 생애주기 표준 00~09 완성 | 2026-06-29 | 단계 표준을 프로젝트 내용으로 작성(template→drafted), 03 UI excluded, MANIFEST 동기화 |
 | GR4 | 표준 00·01·02 승인 + 아키텍처 정합화 | 2026-06-29 | 00·01·02 approved+기준본 생성, web-ui 단위·ADR-0008(검색 HA) 추가, ADR 8→9단위 정합, 03 UI 포함(excluded→drafted) |
 | GR5 | 표준 03~09 승인 (evaluator 교차검증) | 2026-06-30 | 03·04 개별 승인, 05~09 일괄 승인. 05·07·08·09는 완료기준↔적용기준 본문 gap 보완 후 재검증. 전 표준 approved+기준본 |
+| GR6 | WBS 간트차트 Excel 전환 (R1) | 2026-06-30 | wbs.xlsx 신설(WBS·간트차트 2시트, 32작업, 마일스톤 색상), wbs.md는 텍스트 분해 보존+xlsx 링크. 일정은 계획 추정(D+0=2026-07-01) |
 
 ## Remaining
 
 | # | Task | Blocked By | Priority | Notes |
 |---|---|---|---|---|
 | R0 | 표준 검토·승인 이어가기 | GR4 | HIGH | 완료(GR5): 00~09 전 표준 approved+기준본. evaluator 교차검증 통과 |
-| R1 | WBS를 간트차트로 전환 | — | MED | ★ 재개 지점: `docs/deliverables/wbs.md`를 markdown 표가 아닌 간트차트(예: Mermaid `gantt`)로 재작성 |
-| GR | 잔여 gap 해소 + app 스캐폴드 구현 | P8 | — | 결정 필요 잔여 없음(반영 완료)·M1 의존(P2·P3·P7 빌드), web-ui·model-serving·message-queue 스캐폴드와 Java 워커 전환은 구현 대기 |
+| R1 | WBS를 간트차트로 전환 | — | MED | 완료(GR6): Excel 간트(wbs.xlsx)로 전환 |
+| GR | 잔여 gap 해소 + app 스캐폴드 구현 | P8 | — | ★ 재개 지점: web-ui·model-serving·message-queue 스캐폴드와 index-worker Java 전환(WBS 0.4). 결정은 모두 반영 완료, 구현은 M1 의존 |
 
 ## Dependencies
 
