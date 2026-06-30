@@ -4,15 +4,17 @@ role: deliverable
 stage: "00"
 status: drafted
 owner: yhn032
-updated: 2026-06-29
+updated: 2026-06-30
 source: intake-side-project-charter
 sensitivity: public
 ---
 
 # WBS (작업 분해 구조)
 
-> ⚠️ 전환 예정: 이 WBS는 추후 markdown 표가 아닌 간트차트(예: Mermaid `gantt`)로
-> 재작성한다. 현재 표 형식은 임시다.
+> 간트차트는 Excel로 구현했다: [`wbs.xlsx`](wbs.xlsx)의 `간트차트` 시트(마일스톤별
+> 색상, 누적 가로막대). 일정은 의존성·마일스톤 순서를 따른 계획 추정치이며 기준일은
+> D+0 = 2026-07-01이다. 시작일·기간·종료일과 시각화는 `wbs.xlsx`가 기준이고, 아래
+> 표는 작업 분해(담당·의존·상태)를 텍스트로 보존한다.
 
 마일스톤별 작업을 배포 단위 기준으로 분해한다. 담당 표기는
 [협업 워크플로](collaboration-workflow.md)를 따른다. 설계 기준은
