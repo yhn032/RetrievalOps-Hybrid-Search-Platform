@@ -28,7 +28,7 @@ sensitivity: public
 | 01 수령 | [01-intake.md](01-intake.md) | 필수 | `approved` | 수령·격리 기준 승인, 기준본 생성 |
 | 02 아키텍처 | [02-architecture.md](02-architecture.md) | 필수 | `approved` | 아키텍처 표준 승인, 기준본 생성 |
 | 03 UI | [03-ui.md](03-ui.md) | 필수 | `approved` | UI 표준 승인, 기준본 생성 |
-| 04 API | [04-api.md](04-api.md) | 필수 | `drafted` | 인터페이스 계약·오류 형식 정의 |
+| 04 API | [04-api.md](04-api.md) | 필수 | `approved` | API 표준 승인, 기준본 생성 |
 | 05 코딩 | [05-coding.md](05-coding.md) | 필수 | `drafted` | 언어별 구조·변경 단위 기준 |
 | 06 테스트 | [06-testing.md](06-testing.md) | 필수 | `drafted` | 단위·통합·검색 품질 평가 기준 |
 | 07 보안 | [07-security.md](07-security.md) | 필수 | `drafted` | 비밀·비루트·입력 검증 기준 |
