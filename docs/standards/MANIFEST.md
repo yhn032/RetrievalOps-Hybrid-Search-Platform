@@ -29,11 +29,11 @@ sensitivity: public
 | 02 아키텍처 | [02-architecture.md](02-architecture.md) | 필수 | `approved` | 아키텍처 표준 승인, 기준본 생성 |
 | 03 UI | [03-ui.md](03-ui.md) | 필수 | `approved` | UI 표준 승인, 기준본 생성 |
 | 04 API | [04-api.md](04-api.md) | 필수 | `approved` | API 표준 승인, 기준본 생성 |
-| 05 코딩 | [05-coding.md](05-coding.md) | 필수 | `drafted` | 언어별 구조·변경 단위 기준 |
-| 06 테스트 | [06-testing.md](06-testing.md) | 필수 | `drafted` | 단위·통합·검색 품질 평가 기준 |
-| 07 보안 | [07-security.md](07-security.md) | 필수 | `drafted` | 비밀·비루트·입력 검증 기준 |
-| 08 배포 | [08-deployment.md](08-deployment.md) | 필수 | `drafted` | dev·stg·prod 분리·재현 기준 |
-| 09 운영 | [09-operations.md](09-operations.md) | 필수 | `drafted` | 관측·지표·장애 대응 기준 |
+| 05 코딩 | [05-coding.md](05-coding.md) | 필수 | `approved` | 코딩 표준 승인, 기준본 생성 |
+| 06 테스트 | [06-testing.md](06-testing.md) | 필수 | `approved` | 테스트 표준 승인, 기준본 생성 |
+| 07 보안 | [07-security.md](07-security.md) | 필수 | `approved` | 보안 표준 승인, 기준본 생성 |
+| 08 배포 | [08-deployment.md](08-deployment.md) | 필수 | `approved` | 배포 표준 승인, 기준본 생성 |
+| 09 운영 | [09-operations.md](09-operations.md) | 필수 | `approved` | 운영 표준 승인, 기준본 생성 |
 
 ## 관리 문서
 
