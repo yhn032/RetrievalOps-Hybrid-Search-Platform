@@ -41,10 +41,10 @@
 
 ## 컨테이너 경계
 
-`app/<deployment-unit>/`가 컨테이너 배포 단위다. 코드 수정 단위(api-service·
-retrieval-service·index-worker)는 VS Code 로컬 디버깅을 지원하고, 인프라 단위
-(search-store·metadata-store·cache)는 컨테이너로만 기동한다. 세부 구성은 후속
-단계에서 확정한다.
+`app/<deployment-unit>/`가 컨테이너 배포 단위다. 코드 수정 단위 5종(web-ui·
+api-service·retrieval-service·model-serving·index-worker)은 VS Code 로컬
+디버깅을 지원하고, 인프라 단위 4종(search-store·metadata-store·cache·
+message-queue)은 컨테이너로만 기동한다. 세부 구성은 후속 단계에서 확정한다.
 
 ## 개발·오케스트레이션 환경
 

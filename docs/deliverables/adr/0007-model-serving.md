@@ -36,6 +36,6 @@ REST로 호출한다.
 
 ## 결과
 
-- `model-serving`을 코드 수정 단위로 추가한다(배포 단위 8개로 증가).
+- `model-serving`을 코드 수정 단위로 추가한다(이 결정 시점 배포 단위 8개로 증가; 이후 [ADR-0008](0008-search-availability.md)의 web-ui 추가로 최종 9개).
 - retrieval-service·index-worker는 임베딩·Reranker를 REST로 호출한다.
 - 모델·런타임 선택은 M2에서 확정한다.
