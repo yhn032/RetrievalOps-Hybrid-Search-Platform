@@ -1,5 +1,5 @@
 {
-  "name": "index-worker (dev)",
+  "name": "model-serving (dev)",
   "build": {
     "dockerfile": "../dev/Dockerfile",
     "args": { "HOST_UID": "1000", "HOST_GID": "1000" }
@@ -7,9 +7,10 @@
   "workspaceFolder": "/workspace",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
   "remoteUser": "app",
+  "forwardPorts": [8001],
   "customizations": {
     "vscode": {
-      "extensions": ["vscjava.vscode-java-pack"]
+      "extensions": ["ms-python.python"]
     }
   }
 }

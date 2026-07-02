@@ -12,15 +12,19 @@
 
 | 배포 단위 | 기술 | 성격 |
 |---|---|---|
+| `app/web-ui` | 웹 프론트엔드(기술 추후) | 코드 수정 단위 |
 | `app/api-service` | Spring Boot | 코드 수정 단위(VS Code 디버깅) |
 | `app/retrieval-service` | FastAPI | 코드 수정 단위 |
-| `app/index-worker` | Python | 코드 수정 단위 |
+| `app/model-serving` | FastAPI | 코드 수정 단위 |
+| `app/index-worker` | Java | 코드 수정 단위 |
 | `app/search-store` | OpenSearch | 인프라 컨테이너 |
 | `app/metadata-store` | MariaDB | 인프라 컨테이너 |
 | `app/cache` | Redis | 인프라 컨테이너 |
+| `app/message-queue` | RabbitMQ | 인프라 컨테이너 |
 
-각 단위의 `dev`·`stg`·`prod` Dockerfile과 환경변수, 실행 명령은 후속 단계에서
-정의한다. 아래는 개발 환경(컨테이너·에이전트·문서 게이트) 명령이다.
+각 단위의 `dev`·`stg`·`prod` Dockerfile과 환경변수는 `app/<unit>/{dev,stg,prod}/`에
+있다. 코드 수정 단위의 실행 명령(CMD)과 앱 코드는 M1에서 확정한다. 아래는 개발
+환경(컨테이너·에이전트·문서 게이트) 명령이다.
 
 ## Privilege boundary
 

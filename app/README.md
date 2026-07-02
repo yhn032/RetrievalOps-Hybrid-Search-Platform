@@ -11,11 +11,16 @@
 
 | 단위 | 기술 | 성격 |
 |---|---|---|
+| [web-ui](web-ui/README.md) | 웹 프론트엔드(기술 추후) | 코드 수정 단위 |
 | [api-service](api-service/README.md) | Spring Boot | 코드 수정 단위 |
 | [retrieval-service](retrieval-service/README.md) | FastAPI | 코드 수정 단위 |
-| [index-worker](index-worker/README.md) | Python | 코드 수정 단위 |
+| [model-serving](model-serving/README.md) | FastAPI | 코드 수정 단위 |
+| [index-worker](index-worker/README.md) | Java | 코드 수정 단위 |
 | [search-store](search-store/README.md) | OpenSearch | 인프라 컨테이너 |
 | [metadata-store](metadata-store/README.md) | MariaDB | 인프라 컨테이너 |
 | [cache](cache/README.md) | Redis | 인프라 컨테이너 |
+| [message-queue](message-queue/README.md) | RabbitMQ | 인프라 컨테이너 |
 
-각 단위의 `dev`·`stg`·`prod` 컨테이너 구성과 환경변수는 후속 단계에서 추가합니다.
+각 단위의 `dev`·`stg`·`prod` 컨테이너 구성과 환경변수는 각 단위의 `dev/`·`stg/`·
+`prod/` 하위 디렉터리에 있습니다. 코드 수정 단위의 실행 명령(CMD)과 실제 앱 코드는
+M1 이후 추가합니다.

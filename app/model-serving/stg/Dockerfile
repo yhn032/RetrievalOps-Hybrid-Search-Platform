@@ -1,5 +1,4 @@
-# Retrieval Service (FastAPI Dense·Hybrid 결합·검색 오케스트레이션) — stg
-# 임베딩·Reranker 추론은 model-serving을 REST로 호출한다 (ADR-0007)
+# Model Serving (FastAPI embedding/reranker inference) — stg
 # base: python:3.12-slim (정확한 patch 버전은 M1에서 확정)
 FROM python:3.12-slim
 
@@ -19,9 +18,10 @@ WORKDIR /app
 # TODO(M1): copy built artifact / install app deps
 #   예) COPY requirements.txt . && pip install --no-cache-dir -r requirements.txt
 #       COPY ./app ./app
+# 모델·런타임(GPU·vLLM 등) 선택은 M2에서 확정 — GPU base 이미지 전환 여부 포함
 
 USER app
-EXPOSE 8000
+EXPOSE 8001
 
 # stg: prod 와 동일 구성, 스테이징 값 사용 (.env.example 참고)
-# CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2", "--log-level", "info"]
+# CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8001", "--workers", "2", "--log-level", "info"]

@@ -11,7 +11,7 @@
 - [x] 아키텍처와 모듈 경계, 저장소·캐시·메시지 큐·배포 선택이 ADR로 기록되어 있다.
 - [x] 루트 `README.md`, `PROJECT.md`, `REFERENCE.md`가 실제 사이드 프로젝트에 맞게 재작성되어 있다.
 - [x] 모든 추적 문서가 `WORKFLOW.md`에서 도달 가능하고 깨진 링크가 없다.
-- [ ] `app/` 하위 기능 폴더와 컨테이너 배포 단위가 일치한다. (모델 실행 단위 미분리 — gap)
+- [x] `app/` 하위 기능 폴더와 컨테이너 배포 단위가 일치한다. (GR7: 9단위 정합)
 - [ ] 코드 수정 단위는 VS Code 연결과 로컬 디버깅이 가능하며 배포 이미지와 개발 컨테이너가 분리되어 있다.
 - [ ] 모든 서비스가 개별 컨테이너로 실행되고 `dev`·`stg`·`prod` 설정이 분리되어 있다.
 - [ ] 모든 컨테이너가 non-root, host UID/GID, 공통 timezone과 UTF-8 규칙을 준수한다.
@@ -84,6 +84,7 @@ app/
 | P6 | dev·stg·prod Docker·환경변수 구성 | 2026-06-28 | 36파일(Dockerfile 18·.env.example 18), 비밀 placeholder·.env 미추적 |
 | P7 | VS Code 디버깅·배포 분리·runtime 규칙 | 2026-06-28 | 코드 단위 3종 devcontainer, 런타임/배포 문서, 규칙 검사 18 PASS |
 | P8 | 링크·검증·계획 gap 최종 점검 | 2026-06-28 | 검증 green(126·gate·link·runtime), 적대적 감사로 미기록 gap 5건 적발·기록 |
+| GR7 | 결정 반영 스캐폴드(WBS 0.4) | 2026-07-02 | web-ui·model-serving·message-queue 신설, index-worker Java 전환, retrieval-service ADR-0007 정합, runtime 검사 27파일+인프라 USER 보강(G-P8-3). 검증 126 PASS·runtime 27·링크 59. evaluator 교차검증은 토큰 부족으로 다음 세션 이월 |
 | GR1 | 즉시 가능 gap 1차 해소 | 2026-06-29 | P0·G-P8-2·G-P8-4·G-P8-5 해소, runtime 검사 게이트 연동(P7 일부) |
 | GR2 | 설계·WBS·협업 워크플로 수립 | 2026-06-29 | system-design·wbs·collaboration-workflow 신설(8단위 반영), 구현·테스트는 사용자 |
 | GR3 | 생애주기 표준 00~09 완성 | 2026-06-29 | 단계 표준을 프로젝트 내용으로 작성(template→drafted), 03 UI excluded, MANIFEST 동기화 |
@@ -97,7 +98,7 @@ app/
 |---|---|---|---|---|
 | R0 | 표준 검토·승인 이어가기 | GR4 | HIGH | 완료(GR5): 00~09 전 표준 approved+기준본. evaluator 교차검증 통과 |
 | R1 | WBS를 간트차트로 전환 | — | MED | 완료(GR6): Excel 간트(wbs.xlsx)로 전환 |
-| GR | 잔여 gap 해소 + app 스캐폴드 구현 | P8 | — | ★ 재개 지점: web-ui·model-serving·message-queue 스캐폴드와 index-worker Java 전환(WBS 0.4). 결정은 모두 반영 완료, 구현은 M1 의존 |
+| GR | 잔여 gap 해소 + app 스캐폴드 구현 | P8 | — | 스캐폴드 완료(GR7). ★ 재개 지점: GR7 diff의 evaluator 교차검증(이월분) → gap 표 G-P8-1·G-P8-3 해소 확정 → 이후 M1 의존 구현(1.1 등) |
 
 ## Dependencies
 

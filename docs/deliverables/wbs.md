@@ -4,7 +4,7 @@ role: deliverable
 stage: "00"
 status: drafted
 owner: yhn032
-updated: 2026-06-30
+updated: 2026-07-02
 source: intake-side-project-charter
 sensitivity: public
 ---
@@ -33,7 +33,7 @@ search-store, metadata-store, cache, message-queue(RabbitMQ).
 | 0.1 | 요구사항·평가계약·ADR 0001~0006 | D | 완료 |
 | 0.2 | 협업 워크플로·WBS·시스템 설계 | D | 진행 |
 | 0.3 | 데이터셋·질의셋 선정 ADR(0007) | D | 대기 |
-| 0.4 | 결정 반영 스캐폴드: model-serving·message-queue 단위 추가, index-worker Java 전환, ADR-0004/0006 갱신 | F | 대기 |
+| 0.4 | 결정 반영 스캐폴드: model-serving·message-queue 단위 추가, index-worker Java 전환, ADR-0004/0006 갱신 | F | 완료 |
 
 ## M1 — 검색 기준선
 
